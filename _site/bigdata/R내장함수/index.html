@@ -1,0 +1,1019 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>내장함수, 변수 타입과 데이터 구조 - Gobook</title>
+<meta name="description" content="R 내장 함수로 데이터 추출하기  dplyr 패키지를 사용하지 않고 R 내장 함수만 사용해도 데이터를 추출할 수 있다.  dplyr이 내장 함수에 비해 사용하기 쉽고 처리 속도도 빠르다. 하지만 다른 사용자들의 코드를 이해하기 위해 내장함수도 알아야 한다.  내장 함수는 다른 함수들과 조합해 활용할 수 있다.">
+
+
+  <meta name="author" content="dongkwon">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko">
+<meta property="og:site_name" content="Gobook">
+<meta property="og:title" content="내장함수, 변수 타입과 데이터 구조">
+<meta property="og:url" content="http://localhost:4000/bigdata/R%EB%82%B4%EC%9E%A5%ED%95%A8%EC%88%98/">
+
+
+  <meta property="og:description" content="R 내장 함수로 데이터 추출하기  dplyr 패키지를 사용하지 않고 R 내장 함수만 사용해도 데이터를 추출할 수 있다.  dplyr이 내장 함수에 비해 사용하기 쉽고 처리 속도도 빠르다. 하지만 다른 사용자들의 코드를 이해하기 위해 내장함수도 알아야 한다.  내장 함수는 다른 함수들과 조합해 활용할 수 있다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-06-05T23:30:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/bigdata/R%EB%82%B4%EC%9E%A5%ED%95%A8%EC%88%98/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "dongkwon",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Gobook Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Gobook
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tag</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile.jpg" alt="dongkwon" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">dongkwon</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Gwangju, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+            <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="내장함수, 변수 타입과 데이터 구조">
+    <meta itemprop="description" content="R 내장 함수로 데이터 추출하기  dplyr 패키지를 사용하지 않고 R 내장 함수만 사용해도 데이터를 추출할 수 있다.  dplyr이 내장 함수에 비해 사용하기 쉽고 처리 속도도 빠르다. 하지만 다른 사용자들의 코드를 이해하기 위해 내장함수도 알아야 한다.  내장 함수는 다른 함수들과 조합해 활용할 수 있다.">
+    <meta itemprop="datePublished" content="June 05, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">내장함수, 변수 타입과 데이터 구조
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="r-내장-함수로-데이터-추출하기">R 내장 함수로 데이터 추출하기</h2>
+<ul>
+  <li>dplyr 패키지를 사용하지 않고 R 내장 함수만 사용해도 데이터를 추출할 수 있다.</li>
+  <li>dplyr이 내장 함수에 비해 사용하기 쉽고 처리 속도도 빠르다. 하지만 다른 사용자들의 코드를 이해하기 위해 내장함수도 알아야 한다.</li>
+  <li>내장 함수는 다른 함수들과 조합해 활용할 수 있다.</li>
+</ul>
+
+<h3 id="행-번호로-행-추출하기">행 번호로 행 추출하기</h3>
+<ol>
+  <li>
+    <p>데이터 준비</p>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">exam</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read.scv</span><span class="p">(</span><span class="s2">"csv_exam.csv"</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>내장 함수는 프레임명 뒤에 []로 조건을 입력한다
+    <ul>
+      <li>아무 조건이 없으면 전체 데이터를 출력</li>
+    </ul>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">exam</span><span class="p">[]</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>조건 지정
+    <ul>
+      <li>쉼표 왼쪽 : 행에 대한 조건</li>
+      <li>쉼표 오른쪽 : 열(변수)에 대한 조건</li>
+    </ul>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">exam</span><span class="p">[</span><span class="m">1</span><span class="p">,]</span><span class="w">    </span><span class="c1"># 1행 추출</span><span class="w">
+   </span><span class="n">id</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="n">math</span><span class="w"> </span><span class="n">english</span><span class="w"> </span><span class="n">science</span><span class="w">
+ </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">   </span><span class="m">50</span><span class="w">      </span><span class="m">98</span><span class="w">      </span><span class="m">50</span><span class="w">
+
+ </span><span class="n">exam</span><span class="p">[</span><span class="m">2</span><span class="p">,]</span><span class="w">    </span><span class="c1"># 2행 추출</span><span class="w">
+   </span><span class="n">id</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="n">math</span><span class="w"> </span><span class="n">english</span><span class="w"> </span><span class="n">science</span><span class="w">
+ </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">     </span><span class="m">1</span><span class="w">   </span><span class="m">60</span><span class="w">      </span><span class="m">97</span><span class="w">      </span><span class="m">60</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="조건을-충족하는-행-추출하기">조건을 충족하는 행 추출하기</h3>
+<ol>
+  <li>
+    <p>조건에 맞는 행 추출</p>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">exam</span><span class="p">[</span><span class="n">exam</span><span class="o">$</span><span class="n">class</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">,]</span><span class="w">  </span><span class="c1"># class가 1인 행</span><span class="w">
+ </span><span class="n">exam</span><span class="p">[</span><span class="n">exam</span><span class="o">$</span><span class="n">math</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">80</span><span class="p">,]</span><span class="w">  </span><span class="c1"># 수학 점수가 80점 이상인 행</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">&amp;</code>, <code class="highlighter-rouge">|</code>를 사용해 하나이상의 조건지정</p>
+    <ul>
+      <li>내장 함수에서는 조건을 입력할 때 변수명 앞에 데이터 프레임 이름을 반복해 써야 한다</li>
+    </ul>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">exam</span><span class="p">[</span><span class="n">exam</span><span class="o">$</span><span class="n">class</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">exam</span><span class="o">$</span><span class="n">math</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">50</span><span class="p">,]</span><span class="w">        </span><span class="c1"># 1반 이면서 수학 점수가 50점 이상</span><span class="w">
+ </span><span class="n">exam</span><span class="p">[</span><span class="n">exam</span><span class="o">$</span><span class="n">english</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">90</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">exam</span><span class="o">$</span><span class="n">science</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">50</span><span class="p">,]</span><span class="w">    </span><span class="c1"># 영어가 90 미만이거나 과학이 50 미만</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="변수명으로-변수-추출하기">변수명으로 변수 추출하기</h3>
+<ul>
+  <li>데이터에 변수가 많으면 인덱스 값을 알아내기 힘들기 때문에 변수를 추출할 때는 변수명을 활용한다.</li>
+  <li>
+    <p>변수명 추출 : 쉼표 오른쪽에 따옴표와 함께 변수명을 입력</p>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">exam</span><span class="p">[,</span><span class="w"> </span><span class="s2">"class"</span><span class="p">]</span><span class="w">     </span><span class="c1"># class 변수 추출</span><span class="w">
+  </span><span class="n">exam</span><span class="p">[,</span><span class="w"> </span><span class="s2">"math"</span><span class="p">]</span><span class="w">      </span><span class="c1"># math 변수 추출</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">c()</code>를 이용해 여러 변수 동시에 추출 가능</p>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">exam</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s2">"class"</span><span class="p">,</span><span class="s2">"math"</span><span class="p">,</span><span class="s2">"english"</span><span class="p">)]</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="행-변수-동시-추출하기">행, 변수 동시 추출하기</h3>
+<ul>
+  <li>
+    <p>쉼표 양쪽에 조건을 입력</p>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">exam</span><span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">]</span><span class="w">                                           </span><span class="c1"># 행, 변수 모두 인덱스</span><span class="w">
+  </span><span class="n">exam</span><span class="p">[</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="s2">"english"</span><span class="p">]</span><span class="w">                                  </span><span class="c1"># 행 인덱스, 열 변수명</span><span class="w">
+  </span><span class="n">exam</span><span class="p">[</span><span class="n">exam</span><span class="o">$</span><span class="n">math</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="s2">"english"</span><span class="p">]</span><span class="w">                    </span><span class="c1"># 행 부등호 조건, 열 변수명</span><span class="w">
+  </span><span class="n">exam</span><span class="p">[</span><span class="n">exam</span><span class="o">$</span><span class="n">math</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"english"</span><span class="p">,</span><span class="w"> </span><span class="s2">"science"</span><span class="p">)]</span><span class="w">      </span><span class="c1"># 행 부등호 조건, 열 변수명</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="dplyr과-내장-함수의-차이">dplyr과 내장 함수의 차이</h3>
+<ul>
+  <li>
+    <p>수학 점수 50 이상, 영어 점수 80 이상인 학생들을 대상으로 각 반의 전 과목 총평균을 구하라.</p>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="c1"># 내장함수</span><span class="w">
+  </span><span class="n">exam</span><span class="o">$</span><span class="n">tot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">(</span><span class="n">exam</span><span class="o">$</span><span class="n">math</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">exam</span><span class="o">$</span><span class="n">english</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">exam</span><span class="o">$</span><span class="n">science</span><span class="p">)</span><span class="o">/</span><span class="m">3</span><span class="w">
+  </span><span class="n">aggregate</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">exam</span><span class="p">[</span><span class="n">exam</span><span class="o">$</span><span class="n">math</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">exam</span><span class="o">$</span><span class="n">english</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">80</span><span class="p">,],</span><span class="w"> </span><span class="n">tot</span><span class="o">~</span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span><span class="w">
+
+  </span><span class="c1"># dplyr</span><span class="w">
+  </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+      </span><span class="n">filter</span><span class="p">(</span><span class="n">math</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">english</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">80</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+      </span><span class="n">mutate</span><span class="p">(</span><span class="n">tot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">math</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">english</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">science</span><span class="p">)</span><span class="o">/</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+      </span><span class="n">group_by</span><span class="p">(</span><span class="n">class</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+      </span><span class="n">summarise</span><span class="p">(</span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">tot</span><span class="p">))</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>dplyr 코드가 논리의 흐름대로 구조화되어 있어서 내장함수보다 가독성이 높고 이해하기 쉽다.</p>
+  </li>
+</ul>
+
+<h2 id="변수-타입">변수 타입</h2>
+<h3 id="변수의-종류">변수의 종류</h3>
+<ul>
+  <li>연속 변수와 범주 변수로 구분한다.</li>
+  <li>변수의 값이 똑같이 숫자로 되어있어도 변수 종류가 무엇인지에 따라 사용할 수 있는 분석 방법이 다르다.
+    <ol>
+      <li><code class="highlighter-rouge">연속변수</code> - Numeric 타입</li>
+    </ol>
+    <ul>
+      <li>키, 몸무게, 소득처럼 연속적이고 크기를 의미하는 값으로 구성된 변수</li>
+      <li>숫자가 크기를 지니기 때문에 산술을 할 수 있다.</li>
+      <li>양적 변수라고도 한다.</li>
+      <li>R에서 연속 변수는 <code class="highlighter-rouge">numeric(뉴머릭)</code>으로 표현된다.
+        <ol>
+          <li><code class="highlighter-rouge">범주변수</code> - Factor 타입</li>
+        </ol>
+      </li>
+      <li>값이 대상을 분류하는 의미를 지니는 변수</li>
+      <li>성별변수 : 남자는 1, 여자는 2 &gt; 각 범주를 분류한다.</li>
+      <li>숫자가 크기를 의미하지 않기 때문에 산술을 할 수 없다.</li>
+      <li>숫자가 대상을 지칭하는 이름과 같은 역할을 하기 때문에 <code class="highlighter-rouge">명목변수</code>라고도 한다.</li>
+      <li>R에서 범주 변수는 <code class="highlighter-rouge">factor(펙터)</code>로 표현된다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="변수-타입-간-차이">변수 타입 간 차이</h3>
+<ol>
+  <li>
+    <p>타입 변수 생성</p>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">var1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">)</span><span class="w">            </span><span class="c1">#numeric 변수 생성</span><span class="w">
+ </span><span class="n">var2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span><span class="w">    </span><span class="c1">#factor 변수 생성</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>출력</p>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">var1</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">var2</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w">
+ </span><span class="n">Levels</span><span class="o">:</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w">
+</span></code></pre></div>    </div>
+    <ul>
+      <li><code class="highlighter-rouge">Levels</code> : 값이 어떤 범주로 구성되는지 의미</li>
+      <li>factor 변수는 Levels 정보를 지니고 있다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>factor는 연산이 안 된다</p>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">var2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="w">
+
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="kc">NA</span><span class="w">
+ </span><span class="n">Warning</span><span class="w"> </span><span class="n">message</span><span class="o">:</span><span class="w">
+ </span><span class="n">In</span><span class="w"> </span><span class="n">Ops.factor</span><span class="p">(</span><span class="n">var2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">요인</span><span class="p">(</span><span class="n">factors</span><span class="p">)</span><span class="n">에</span><span class="w"> </span><span class="n">대하여</span><span class="w"> </span><span class="n">의미있는</span><span class="w"> </span><span class="err">‘</span><span class="o">+</span><span class="err">’</span><span class="n">가</span><span class="w"> </span><span class="n">아닙니다.</span><span class="w">
+</span></code></pre></div>    </div>
+    <ul>
+      <li>foctor 변수는 데이터가 범주이기 때문에 연산할 수 없다.</li>
+    </ul>
+  </li>
+  <li>변수 타입 확인하기
+    <ul>
+      <li><code class="highlighter-rouge">class()</code>를 이용하면 변수의 타입이 무엇인지 확인할 수 있다.</li>
+    </ul>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">var1</span><span class="p">)</span><span class="w">
+
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"numeric"</span><span class="w">
+ </span><span class="nf">class</span><span class="p">(</span><span class="n">var2</span><span class="p">)</span><span class="w">
+
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"factor"</span><span class="w">    
+</span></code></pre></div>    </div>
+  </li>
+  <li>factor의 구성 범주 확인하기
+    <ul>
+      <li><code class="highlighter-rouge">levels()</code>를 이용하면 factor 변수의 값이 어떤 범주로 구성되는지 알 수 있다.</li>
+    </ul>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">levels</span><span class="p">(</span><span class="n">var1</span><span class="p">)</span><span class="w">
+
+ </span><span class="kc">NULL</span><span class="w">
+
+ </span><span class="n">levels</span><span class="p">(</span><span class="n">var2</span><span class="p">)</span><span class="w">
+
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"1"</span><span class="w"> </span><span class="s2">"2"</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>문자로 구성된 factor 변수</p>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">var3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">)</span><span class="w">
+ </span><span class="n">var4</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">))</span><span class="w">
+ </span><span class="n">var3</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"a"</span><span class="w"> </span><span class="s2">"b"</span><span class="w"> </span><span class="s2">"b"</span><span class="w"> </span><span class="s2">"c"</span><span class="w">
+
+ </span><span class="n">var4</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">c</span><span class="w">
+ </span><span class="n">Levels</span><span class="o">:</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">c</span><span class="w">
+</span></code></pre></div>    </div>
+    <ul>
+      <li>숫자와 똑같다.</li>
+    </ul>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">class()</code>를 사용하면 타입을 알 수 있다.</p>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">var3</span><span class="p">)</span><span class="w">
+
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"character"</span><span class="w">
+
+ </span><span class="nf">class</span><span class="p">(</span><span class="n">var4</span><span class="p">)</span><span class="w">
+
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"factor"</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>함수마다 적용 가능한 변수 타입이 다르다.
+    <ul>
+      <li>함수를 활용하려면 먼저 변수가 함수에 적용할 수 있는 타입인지 확인해야 함.</li>
+    </ul>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">var1</span><span class="p">)</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">1.8</span><span class="w">
+
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">var2</span><span class="p">)</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="kc">NA</span><span class="w">
+ </span><span class="n">Warning</span><span class="w"> </span><span class="n">message</span><span class="o">:</span><span class="w">
+ </span><span class="n">In</span><span class="w"> </span><span class="n">mean.default</span><span class="p">(</span><span class="n">var2</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w">
+ </span><span class="n">인자가</span><span class="w"> </span><span class="n">수치형</span><span class="w"> </span><span class="n">또는</span><span class="w"> </span><span class="n">논리형이</span><span class="w"> </span><span class="n">아니므로</span><span class="w"> </span><span class="n">NA를</span><span class="w"> </span><span class="n">반환합니다</span><span class="w">
+</span></code></pre></div>    </div>
+    <ul>
+      <li>var2는 factor 타입이기 때문에 경고메시지가 출력된다.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="변수-타입-바꾸기">변수 타입 바꾸기</h3>
+<ul>
+  <li>함수를 실행했는데 이상한 결과가 나왔다면 변수가 함수에 적용할 수 있는 타입인지 확인해야 한다.</li>
+  <li>타입이 맞지 않다면 함수에 적용할 수 있도록 변환해야 한다.</li>
+</ul>
+
+<ol>
+  <li>변수 타입 변환하기
+    <ul>
+      <li>var2를 numeric으로 변환</li>
+    </ul>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">var2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">var2</span><span class="p">)</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">var2</span><span class="p">)</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">1.8</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>변환하면 factor 타입이 아니게 된다.
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">var2</span><span class="p">)</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"numeric"</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">levels</span><span class="p">(</span><span class="n">var2</span><span class="p">)</span><span class="w">
+ </span><span class="kc">NULL</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ol>
+
+<ul>
+  <li>as.로 시작하는 함수들은 변수의 타입을 바꾸는 기능</li>
+  <li>이러한 함수를 <code class="highlighter-rouge">변환함수</code>라고 한다.</li>
+</ul>
+
+<h2 id="데이터-구조">데이터 구조</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">데이터구조</th>
+      <th style="text-align: center">차원</th>
+      <th style="text-align: center">특징</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">벡터(Vactor)</td>
+      <td style="text-align: center">1차원</td>
+      <td style="text-align: center">한 가지 변수 타입으로 구성</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">데이터프레임(Data Frame)</td>
+      <td style="text-align: center">2차원</td>
+      <td style="text-align: center">다양한 변수 타입으로 구성</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">매트릭스(Matrix)</td>
+      <td style="text-align: center">2차원</td>
+      <td style="text-align: center">한 가지 변수 타입으로 구성</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">어레이(Array)</td>
+      <td style="text-align: center">다차원</td>
+      <td style="text-align: center">2차원 이상의 매트릭스</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">리스트(List)</td>
+      <td style="text-align: center">다차원</td>
+      <td style="text-align: center">서로 다른 데이터 구조 포함</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="데이터-구조-비교">데이터 구조 비교</h3>
+<ol>
+  <li>벡터
+    <ul>
+      <li>하나의 값 또는 여러 개의 값으로 구성된 데이터 구조</li>
+      <li>여러 변수 타입을 섞을 수 없고, 한 가지 타입으로만 구성할 수 있다.</li>
+    </ul>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="o">&lt;</span><span class="m">-1</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">1</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="o">&lt;-</span><span class="s2">"hello"</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"hello"</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"numeric"</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"character"</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>데이터 프레임
+    <ul>
+      <li>행과 열로 구성된 2차원 데이터 구조</li>
+      <li>다양한 변수 타입으로 구성할 수 있다.</li>
+    </ul>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">var1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">),</span><span class="w">
+ </span><span class="o">+</span><span class="w">                  </span><span class="n">var2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">))</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x1</span><span class="w">
+ </span><span class="n">var1</span><span class="w"> </span><span class="n">var2</span><span class="w">
+ </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="n">a</span><span class="w">
+ </span><span class="m">2</span><span class="w">    </span><span class="m">2</span><span class="w">    </span><span class="n">b</span><span class="w">
+ </span><span class="m">3</span><span class="w">    </span><span class="m">3</span><span class="w">    </span><span class="n">c</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"data.frame"</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>매트릭스
+    <ul>
+      <li>행과 열로 구성된 2차원 데이터 구조</li>
+      <li>데이터 프레임과 다르게 한 가지 변수 타입으로만 구성할 수 있다.</li>
+    </ul>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="c1"># 1~12로 2열</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">),</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x2</span><span class="w">
+     </span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">,]</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">7</span><span class="w">
+ </span><span class="p">[</span><span class="m">2</span><span class="p">,]</span><span class="w">    </span><span class="m">2</span><span class="w">    </span><span class="m">8</span><span class="w">
+ </span><span class="p">[</span><span class="m">3</span><span class="p">,]</span><span class="w">    </span><span class="m">3</span><span class="w">    </span><span class="m">9</span><span class="w">
+ </span><span class="p">[</span><span class="m">4</span><span class="p">,]</span><span class="w">    </span><span class="m">4</span><span class="w">   </span><span class="m">10</span><span class="w">
+ </span><span class="p">[</span><span class="m">5</span><span class="p">,]</span><span class="w">    </span><span class="m">5</span><span class="w">   </span><span class="m">11</span><span class="w">
+ </span><span class="p">[</span><span class="m">6</span><span class="p">,]</span><span class="w">    </span><span class="m">6</span><span class="w">   </span><span class="m">12</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"matrix"</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>어레이
+    <ul>
+      <li>2차원 이상으로 구성된 매트릭스</li>
+      <li>한 가지 변수 타입으로만 구성할 수 있다.</li>
+    </ul>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="c1"># 1~20으로 2행 * 5열 * 2차원</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">array</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">dim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">2</span><span class="p">))</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x3</span><span class="w">
+ </span><span class="p">,</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="w">
+
+     </span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">3</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">4</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">5</span><span class="p">]</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">,]</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">3</span><span class="w">    </span><span class="m">5</span><span class="w">    </span><span class="m">7</span><span class="w">    </span><span class="m">9</span><span class="w">
+ </span><span class="p">[</span><span class="m">2</span><span class="p">,]</span><span class="w">    </span><span class="m">2</span><span class="w">    </span><span class="m">4</span><span class="w">    </span><span class="m">6</span><span class="w">    </span><span class="m">8</span><span class="w">   </span><span class="m">10</span><span class="w">
+
+ </span><span class="p">,</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="w">
+
+     </span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">3</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">4</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">5</span><span class="p">]</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">,]</span><span class="w">   </span><span class="m">11</span><span class="w">   </span><span class="m">13</span><span class="w">   </span><span class="m">15</span><span class="w">   </span><span class="m">17</span><span class="w">   </span><span class="m">19</span><span class="w">
+ </span><span class="p">[</span><span class="m">2</span><span class="p">,]</span><span class="w">   </span><span class="m">12</span><span class="w">   </span><span class="m">14</span><span class="w">   </span><span class="m">16</span><span class="w">   </span><span class="m">18</span><span class="w">   </span><span class="m">20</span><span class="w">
+
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"array"</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>리스트
+    <ul>
+      <li>모든 데이터 구조를 포함하는 데이터 구조</li>
+      <li>여러 데이터 구조를 합해 하나의 리스트로 만들 수 있다.</li>
+    </ul>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x4</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">f1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w">
+ </span><span class="o">+</span><span class="w">            </span><span class="n">f2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w">
+ </span><span class="o">+</span><span class="w">            </span><span class="n">f3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w">
+ </span><span class="o">+</span><span class="w">            </span><span class="n">f4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x3</span><span class="p">)</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x4</span><span class="w">
+ </span><span class="o">$</span><span class="n">f1</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">1</span><span class="w">
+
+ </span><span class="o">$</span><span class="n">f2</span><span class="w">
+ </span><span class="n">var1</span><span class="w"> </span><span class="n">var2</span><span class="w">
+ </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="n">a</span><span class="w">
+ </span><span class="m">2</span><span class="w">    </span><span class="m">2</span><span class="w">    </span><span class="n">b</span><span class="w">
+ </span><span class="m">3</span><span class="w">    </span><span class="m">3</span><span class="w">    </span><span class="n">c</span><span class="w">
+
+ </span><span class="o">$</span><span class="n">f3</span><span class="w">
+     </span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">,]</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">7</span><span class="w">
+ </span><span class="p">[</span><span class="m">2</span><span class="p">,]</span><span class="w">    </span><span class="m">2</span><span class="w">    </span><span class="m">8</span><span class="w">
+ </span><span class="p">[</span><span class="m">3</span><span class="p">,]</span><span class="w">    </span><span class="m">3</span><span class="w">    </span><span class="m">9</span><span class="w">
+ </span><span class="p">[</span><span class="m">4</span><span class="p">,]</span><span class="w">    </span><span class="m">4</span><span class="w">   </span><span class="m">10</span><span class="w">
+ </span><span class="p">[</span><span class="m">5</span><span class="p">,]</span><span class="w">    </span><span class="m">5</span><span class="w">   </span><span class="m">11</span><span class="w">
+ </span><span class="p">[</span><span class="m">6</span><span class="p">,]</span><span class="w">    </span><span class="m">6</span><span class="w">   </span><span class="m">12</span><span class="w">
+
+ </span><span class="o">$</span><span class="n">f4</span><span class="w">
+ </span><span class="p">,</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="w">
+
+     </span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">3</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">4</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">5</span><span class="p">]</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">,]</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">3</span><span class="w">    </span><span class="m">5</span><span class="w">    </span><span class="m">7</span><span class="w">    </span><span class="m">9</span><span class="w">
+ </span><span class="p">[</span><span class="m">2</span><span class="p">,]</span><span class="w">    </span><span class="m">2</span><span class="w">    </span><span class="m">4</span><span class="w">    </span><span class="m">6</span><span class="w">    </span><span class="m">8</span><span class="w">   </span><span class="m">10</span><span class="w">
+
+ </span><span class="p">,</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="w">
+
+     </span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">3</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">4</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">5</span><span class="p">]</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">,]</span><span class="w">   </span><span class="m">11</span><span class="w">   </span><span class="m">13</span><span class="w">   </span><span class="m">15</span><span class="w">   </span><span class="m">17</span><span class="w">   </span><span class="m">19</span><span class="w">
+ </span><span class="p">[</span><span class="m">2</span><span class="p">,]</span><span class="w">   </span><span class="m">12</span><span class="w">   </span><span class="m">14</span><span class="w">   </span><span class="m">16</span><span class="w">   </span><span class="m">18</span><span class="w">   </span><span class="m">20</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <ul>
+      <li>함수의 결과물이 리스트 형태로 반환되는 경우가 많기 때문에 R에서 중요한 데이터 구조이다.</li>
+      <li>함수의 결과물에서 특정 값을 추출할 수 있다.</li>
+    </ul>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">mpg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ggplot2</span><span class="o">::</span><span class="n">mpg</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">boxplot</span><span class="p">(</span><span class="n">mpg</span><span class="o">$</span><span class="n">cty</span><span class="p">)</span><span class="w">
+ </span><span class="o">$</span><span class="n">stats</span><span class="w">
+     </span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">,]</span><span class="w">    </span><span class="m">9</span><span class="w">
+ </span><span class="p">[</span><span class="m">2</span><span class="p">,]</span><span class="w">   </span><span class="m">14</span><span class="w">
+ </span><span class="p">[</span><span class="m">3</span><span class="p">,]</span><span class="w">   </span><span class="m">17</span><span class="w">
+ </span><span class="p">[</span><span class="m">4</span><span class="p">,]</span><span class="w">   </span><span class="m">19</span><span class="w">
+ </span><span class="p">[</span><span class="m">5</span><span class="p">,]</span><span class="w">   </span><span class="m">26</span><span class="w">
+ </span><span class="nf">attr</span><span class="p">(,</span><span class="s2">"class"</span><span class="p">)</span><span class="w">
+         </span><span class="m">1</span><span class="w">
+ </span><span class="s2">"integer"</span><span class="w">
+
+ </span><span class="o">$</span><span class="n">n</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">234</span><span class="w">
+
+ </span><span class="o">$</span><span class="n">conf</span><span class="w">
+         </span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">,]</span><span class="w"> </span><span class="m">16.48356</span><span class="w">
+ </span><span class="p">[</span><span class="m">2</span><span class="p">,]</span><span class="w"> </span><span class="m">17.51644</span><span class="w">
+
+ </span><span class="o">$</span><span class="n">out</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">33</span><span class="w"> </span><span class="m">35</span><span class="w"> </span><span class="m">29</span><span class="w">
+
+ </span><span class="o">$</span><span class="n">group</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w">
+
+ </span><span class="o">$</span><span class="n">names</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="o">$</span><span class="n">stats</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w">       </span><span class="c1"># 요약 통계량 추출</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">26</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="o">$</span><span class="n">stats</span><span class="p">[,</span><span class="m">1</span><span class="p">][</span><span class="m">3</span><span class="p">]</span><span class="w">    </span><span class="c1"># 중앙값 추출</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">17</span><span class="w">
+ </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="o">$</span><span class="n">stats</span><span class="p">[,</span><span class="m">1</span><span class="p">][</span><span class="m">2</span><span class="p">]</span><span class="w">    </span><span class="c1"># 1분위수 추출</span><span class="w">
+ </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">14</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#bigdata" class="page__taxonomy-item" rel="tag">bigdata</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-06-05T23:30:00+09:00">June 05, 2019</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/bigdata/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EB%B3%B4%EA%B3%A0%EC%84%9C%EB%A7%8C%EB%93%A4%EA%B8%B0/" class="pagination--pager" title="데이터 분석 보고서 만들기
+">이전</a>
+    
+    
+      <a href="/algorithm/16234/" class="pagination--pager" title="16234 인구이동 - 삼성 sw 역량 기출
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/%EC%8A%A4%ED%82%AC%ED%8A%B8%EB%A6%AC/" rel="permalink">스킬트리 (level2)
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">스킬트리
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%9A%94%EC%95%BD/" rel="permalink">os 요약
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스 vs 스레드
+
+  프로세스
+    
+      컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램
+      운영체제로부터 시스템 자원을 할당받는 작업의 단위
+      
+    
+  
+  스레드
+    
+      프로세스 내에서 실행되는 여러 흐름의 단위
+      프...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" rel="permalink">운영체제 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스와 스레드의 차이
+프로세스
+실행 중인 프로그램
+메모리에 적재되어 cpu의 할당을 받을 수 있는 것
+OS로부터 주소공간, 파일, 메모리 등을 할당받은 것
+함수의 매개변수, 임시 자료를 갖는 프로세스 스택, 전역 변수를 수록하는 데이터 섹션 포함
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/data/structure/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="permalink">자료구조 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Array
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+        
+      
+        
+          <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 dongkwon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

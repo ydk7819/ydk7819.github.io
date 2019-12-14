@@ -1,0 +1,1192 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>자료구조 정리 - Gobook</title>
+<meta name="description" content="Array">
+
+
+  <meta name="author" content="dongkwon">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko">
+<meta property="og:site_name" content="Gobook">
+<meta property="og:title" content="자료구조 정리">
+<meta property="og:url" content="http://localhost:4000/data/structure/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/">
+
+
+  <meta property="og:description" content="Array">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-10-03T05:40:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/data/structure/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "dongkwon",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Gobook Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Gobook
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tag</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile.jpg" alt="dongkwon" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">dongkwon</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Gwangju, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+            <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="자료구조 정리">
+    <meta itemprop="description" content="Array">
+    <meta itemprop="datePublished" content="October 03, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">자료구조 정리
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="array">Array</h2>
+
+<p>인덱스로 해당 원소에 접근할 수 있다.</p>
+
+<p>찾고자 하는 원소의 인덱스 값을 알고 있으면 O(1)에 해당 원소로 접근할 수 있다.</p>
+
+<p>하지만 삭제 또는 삽입의 과정에서는 해당 원소에 접근하여 작업을 완료한 뒤, 작업을 추가적으로 해줘야하기 때문에 시간이 더 걸린다.</p>
+
+<p>만약 배열의 원소 중 어느 원소를 삭제했다고 했을 때, 배열의 빈공간이 생기므로 삭제한 원소보다 큰 인덱스를 갖는 원소들을 shift 해줘야하는 비용이 발생하고 O(n)의 시간이 걸린다. 삽입도 마찬가지.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span>
+</code></pre></div></div>
+
+<h2 id="linkedlist">LinkedList</h2>
+
+<p>Array의 문제점을 해결하기 위한 자료구조. 삽입과 삭제를 O(1) 만에 해결할 수 있다.</p>
+
+<p>하지만 원하는 위치에 삽입을 하고자 하면 원하는 위치를 Search 과정에 있어서 첫번째 원소부터 확인해야한다.</p>
+
+<p>원소를 찾기 위해서 O(n)의 시간이 발생하게 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Node</span><span class="o">{</span>
+   <span class="kt">int</span> <span class="n">value</span><span class="o">;</span>
+   <span class="nc">Node</span> <span class="n">nextNode</span><span class="o">;</span> <span class="c1">// 다음 위치</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="stack">Stack</h2>
+
+<p>선형 자료구조로서 Last In First Out (LIFO) 나중에 들어간 원소가 먼저 나온다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Stack</span> <span class="o">{</span>
+
+   <span class="kt">int</span> <span class="n">top</span><span class="o">;</span>
+   <span class="kt">int</span><span class="o">[]</span> <span class="n">stack</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">size</span><span class="o">;</span>
+
+   <span class="kd">public</span> <span class="nf">Stack</span><span class="o">(</span><span class="kt">int</span> <span class="n">size</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">top</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+      <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">size</span><span class="o">];</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">size</span> <span class="o">=</span> <span class="n">size</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">peek</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">stack</span><span class="o">[</span><span class="n">top</span><span class="o">];</span> <span class="c1">// 가장 위에있는 원소 반환</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">push</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">stack</span><span class="o">[++</span><span class="n">top</span><span class="o">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stack</span><span class="o">[</span><span class="n">top</span><span class="o">]</span> <span class="o">+</span> <span class="s">" PUSH !"</span><span class="o">);</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">pop</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stack</span><span class="o">[</span><span class="n">top</span><span class="o">]</span> <span class="o">+</span> <span class="s">" POP !"</span><span class="o">);</span>
+      <span class="k">return</span> <span class="n">stack</span><span class="o">[</span><span class="n">top</span><span class="o">--];</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printStack</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"-- STACK LIST --"</span><span class="o">);</span>
+      <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">top</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span>
+         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stack</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"-- END OF LIST --"</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="queue">Queue</h2>
+
+<p>선형 자료구조로서 First In First Out(FIFO) 먼저 들어간 원소가 먼저 나온다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 배열 이용</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Queue</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">array</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">head</span><span class="o">;</span> 
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">tail</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">Queue</span><span class="o">(</span><span class="kt">int</span> <span class="n">size</span><span class="o">)</span> <span class="o">{</span> 
+        <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">size</span><span class="o">];</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span> 
+        <span class="n">tail</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span> 
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">enQueue</span><span class="o">(</span><span class="kt">int</span> <span class="n">number</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">tail</span> <span class="o">==</span> <span class="n">array</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nc">RuntimeException</span><span class="o">(</span><span class="s">"큐가 다 찼습니다."</span><span class="o">);</span> 
+        <span class="n">array</span><span class="o">[++</span><span class="n">tail</span><span class="o">]</span> <span class="o">=</span> <span class="n">number</span><span class="o">;</span> 
+    <span class="o">}</span> 
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">deQueue</span><span class="o">()</span> <span class="o">{</span> 
+        <span class="k">if</span> <span class="o">(</span><span class="n">tail</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nc">RuntimeException</span><span class="o">(</span><span class="s">"큐에 데이터가 없습니다."</span><span class="o">);</span> 
+        <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">array</span><span class="o">[++</span><span class="n">head</span><span class="o">];</span>
+        <span class="n">array</span><span class="o">[</span><span class="n">head</span><span class="o">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span> 
+       
+        <span class="k">if</span> <span class="o">(</span><span class="n">head</span> <span class="o">==</span> <span class="n">tail</span><span class="o">)</span> <span class="o">{</span> <span class="n">head</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">tail</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="o">}</span> <span class="k">return</span> <span class="n">temp</span><span class="o">;</span>
+    <span class="o">}</span>
+
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 연결리스트 이용</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListQueue</span> <span class="o">{</span>
+    
+    <span class="kd">private</span> <span class="kd">class</span> <span class="nc">Node</span><span class="o">{</span>
+        
+        <span class="c1">// 노드는 data와 다음 노드를 가진다.</span>
+        <span class="kd">private</span> <span class="nc">Object</span>  <span class="n">data</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="nc">Node</span> <span class="n">nextNode</span><span class="o">;</span>
+    
+        <span class="nc">Node</span><span class="o">(</span><span class="nc">Object</span> <span class="n">data</span><span class="o">){</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">nextNode</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 큐는 front노드와 rear노드를 가진다.</span>
+    <span class="kd">private</span> <span class="nc">Node</span> <span class="n">front</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Node</span> <span class="n">rear</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">ListQueue</span><span class="o">(){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">front</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">rear</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 큐가 비어있는지 확인</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">empty</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="o">(</span><span class="n">front</span><span class="o">==</span><span class="kc">null</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// item을 큐의 rear에 넣는다.</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insert</span><span class="o">(</span><span class="nc">Object</span> <span class="n">item</span><span class="o">){</span>
+        
+        <span class="nc">Node</span> <span class="n">node</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+        <span class="n">node</span><span class="o">.</span><span class="na">nextNode</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        
+        <span class="k">if</span><span class="o">(</span><span class="n">empty</span><span class="o">()){</span>
+            
+            <span class="n">rear</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+            <span class="n">front</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+        
+        <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+            
+            <span class="n">rear</span><span class="o">.</span><span class="na">nextNode</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+            <span class="n">rear</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+            
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// front 의 데이터를 반환한다.</span>
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">peek</span><span class="o">(){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">empty</span><span class="o">())</span> <span class="k">throw</span> <span class="k">new</span> <span class="nc">ArrayIndexOutOfBoundsException</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">front</span><span class="o">.</span><span class="na">data</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// front 를 큐에서 제거한다.</span>
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">remove</span><span class="o">(){</span>
+        
+        <span class="nc">Object</span> <span class="n">item</span> <span class="o">=</span> <span class="n">peek</span><span class="o">();</span>
+        <span class="n">front</span> <span class="o">=</span> <span class="n">front</span><span class="o">.</span><span class="na">nextNode</span><span class="o">;</span>
+        
+        <span class="k">if</span><span class="o">(</span><span class="n">front</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="n">rear</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">item</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h2 id="이진트리">이진트리</h2>
+
+<p>루트 노드를 중심으로 두 개의 서브 트리로 나뉘어진다. 트리에서는 각 층별로 숫자를 매겨서 이를 트리의 레벨이라고 한다.</p>
+
+<p>레벨의 값은 0부터 시작하고 따라서 루트 레벨은 0이다. 그리고 트리의 최고 레벨을 가리켜 해당 트리의 높이라고 한다.</p>
+
+<h2 id="binary-search-tree">Binary Search Tree</h2>
+
+<p>이진 탐색 트리의 연산은 O(log n)의 시간 복잡도를 갖는다.</p>
+
+<p>규칙</p>
+
+<ol>
+  <li>이진 탐색 트리의 노드에 저장된 키는 유일하다.</li>
+  <li>루트 노드의 키가 왼쪽 서브 트리를 구성하는 어떠한 노드의 키보다 크다.</li>
+  <li>루트 노드의 키가 오른쪽 서브 트리를 구성하는 어떠한 노드의 키보다 작다.</li>
+  <li>왼쪽과 오른쪽 서브트리도 이진 탐색 트리이다.</li>
+</ol>
+
+<p>https://swalloow.tistory.com/35</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">data</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Node</span> <span class="n">left</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Node</span> <span class="n">right</span><span class="o">;</span>    
+    
+    <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">data</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">setData</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+        <span class="n">setLeft</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+        <span class="n">setRight</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+    <span class="o">}</span>
+ 
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getData</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">data</span><span class="o">;</span>
+    <span class="o">}</span>
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setData</span><span class="o">(</span><span class="kt">int</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+    <span class="o">}</span>
+  
+    <span class="kd">public</span> <span class="nc">Node</span> <span class="nf">getLeft</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">left</span><span class="o">;</span>
+    <span class="o">}</span>
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setLeft</span><span class="o">(</span><span class="nc">Node</span> <span class="n">left</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">left</span><span class="o">;</span>
+    <span class="o">}</span>
+  
+    <span class="kd">public</span> <span class="nc">Node</span> <span class="nf">getRight</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">right</span><span class="o">;</span>
+    <span class="o">}</span>
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setRight</span><span class="o">(</span><span class="nc">Node</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">right</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BinarySearchTree</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">Node</span> <span class="n">root</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">BinarySearchTree</span><span class="o">(){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">root</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">//탐색 연산</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">find</span><span class="o">(</span><span class="kt">int</span> <span class="n">id</span><span class="o">){</span>
+        <span class="nc">Node</span> <span class="n">current</span> <span class="o">=</span> <span class="n">root</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">current</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+            <span class="c1">//현재 노드와 찾는 값이 같으면</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">getData</span><span class="o">()==</span><span class="n">id</span><span class="o">){</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="c1">//찾는 값이 현재 노드보다 작으면</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">getData</span><span class="o">()&gt;</span><span class="n">id</span><span class="o">){</span>
+                <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">getLeft</span><span class="o">();</span>
+                <span class="c1">//찾는 값이 현재 노드보다 크면</span>
+            <span class="o">}</span> <span class="k">else</span><span class="o">{</span>
+                <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">getRight</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+  
+  	<span class="c1">//삽입 연산</span>
+  	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">insert</span><span class="o">(</span><span class="kt">int</span> <span class="n">id</span><span class="o">){</span>
+        <span class="nc">Node</span> <span class="n">newNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">root</span><span class="o">==</span><span class="kc">null</span><span class="o">){</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="n">newNode</span><span class="o">;</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="nc">Node</span> <span class="n">current</span> <span class="o">=</span> <span class="n">root</span><span class="o">;</span>
+        <span class="nc">Node</span> <span class="n">parent</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+            <span class="n">parent</span> <span class="o">=</span> <span class="n">current</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">id</span> <span class="o">&lt;</span> <span class="n">current</span><span class="o">.</span><span class="na">getData</span><span class="o">()){</span>                
+                <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">getLeft</span><span class="o">();</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">current</span><span class="o">==</span><span class="kc">null</span><span class="o">){</span>
+                    <span class="n">parent</span><span class="o">.</span><span class="na">setLeft</span><span class="o">(</span><span class="n">newNode</span><span class="o">);</span>
+                    <span class="k">return</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">getRight</span><span class="o">();</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">current</span><span class="o">==</span><span class="kc">null</span><span class="o">){</span>
+                    <span class="n">parent</span><span class="o">.</span><span class="na">setRight</span><span class="o">(</span><span class="n">newNode</span><span class="o">);</span>
+                    <span class="k">return</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+  	<span class="c1">// 삭제 연산</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">delete</span><span class="o">(</span><span class="kt">int</span> <span class="n">id</span><span class="o">){</span>
+          <span class="nc">Node</span> <span class="n">parent</span> <span class="o">=</span> <span class="n">root</span><span class="o">;</span>
+          <span class="nc">Node</span> <span class="n">current</span> <span class="o">=</span> <span class="n">root</span><span class="o">;</span>
+          <span class="kt">boolean</span> <span class="n">isLeftChild</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+          <span class="k">while</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">getData</span><span class="o">()!=</span><span class="n">id</span><span class="o">){</span>
+              <span class="n">parent</span> <span class="o">=</span> <span class="n">current</span><span class="o">;</span>
+              <span class="k">if</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">getData</span><span class="o">()&gt;</span><span class="n">id</span><span class="o">){</span>
+                  <span class="n">isLeftChild</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                  <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">getLeft</span><span class="o">();</span>
+              <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                  <span class="n">isLeftChild</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+                  <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">getRight</span><span class="o">();</span>
+              <span class="o">}</span>
+              <span class="k">if</span><span class="o">(</span><span class="n">current</span><span class="o">==</span><span class="kc">null</span><span class="o">){</span>
+                  <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+              <span class="o">}</span>
+          <span class="o">}</span>
+          <span class="c1">//Case 1: 자식노드가 없는 경우</span>
+          <span class="k">if</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">getLeft</span><span class="o">()==</span><span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">current</span><span class="o">.</span><span class="na">getRight</span><span class="o">()==</span><span class="kc">null</span><span class="o">){</span>
+              <span class="k">if</span><span class="o">(</span><span class="n">current</span><span class="o">==</span><span class="n">root</span><span class="o">){</span>
+                  <span class="n">root</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+              <span class="o">}</span>
+              <span class="k">if</span><span class="o">(</span><span class="n">isLeftChild</span><span class="o">==</span><span class="kc">true</span><span class="o">){</span>
+                  <span class="n">parent</span><span class="o">.</span><span class="na">setLeft</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+              <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                  <span class="n">parent</span><span class="o">.</span><span class="na">setRight</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+              <span class="o">}</span>
+          <span class="o">}</span>
+      		
+      		<span class="c1">//Case 2 : 하나의 자식을 갖는 경우</span>
+          <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">getRight</span><span class="o">()==</span><span class="kc">null</span><span class="o">){</span>
+              <span class="k">if</span><span class="o">(</span><span class="n">current</span><span class="o">==</span><span class="n">root</span><span class="o">){</span>
+                  <span class="n">root</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">getLeft</span><span class="o">();</span>
+              <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">isLeftChild</span><span class="o">){</span>
+                  <span class="n">parent</span><span class="o">.</span><span class="na">setLeft</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">getLeft</span><span class="o">());</span>
+              <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                  <span class="n">parent</span><span class="o">.</span><span class="na">setRight</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">getLeft</span><span class="o">());</span>
+              <span class="o">}</span>
+          <span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">getLeft</span><span class="o">()==</span><span class="kc">null</span><span class="o">){</span>
+              <span class="k">if</span><span class="o">(</span><span class="n">current</span><span class="o">==</span><span class="n">root</span><span class="o">){</span>
+                  <span class="n">root</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">getRight</span><span class="o">();</span>
+              <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">isLeftChild</span><span class="o">){</span>
+                  <span class="n">parent</span><span class="o">.</span><span class="na">setLeft</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">getRight</span><span class="o">());</span>
+              <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                  <span class="n">parent</span><span class="o">.</span><span class="na">setRight</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">getRight</span><span class="o">());</span>
+              <span class="o">}</span>
+          <span class="o">}</span>
+      
+          <span class="c1">//Case 3 : 두개의 자식을 갖는 경우</span>
+          <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">getLeft</span><span class="o">()!=</span><span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">current</span><span class="o">.</span><span class="na">getRight</span><span class="o">()!=</span><span class="kc">null</span><span class="o">){</span>
+              <span class="c1">// 오른쪽 서브트리의 최소값을 찾음</span>
+              <span class="nc">Node</span> <span class="n">successor</span> <span class="o">=</span> <span class="n">getSuccessor</span><span class="o">(</span><span class="n">current</span><span class="o">);</span>
+              <span class="k">if</span><span class="o">(</span><span class="n">current</span><span class="o">==</span><span class="n">root</span><span class="o">){</span>
+                  <span class="n">root</span> <span class="o">=</span> <span class="n">successor</span><span class="o">;</span>
+              <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">isLeftChild</span><span class="o">){</span>
+                  <span class="n">parent</span><span class="o">.</span><span class="na">setLeft</span><span class="o">(</span><span class="n">successor</span><span class="o">);</span>
+              <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                  <span class="n">parent</span><span class="o">.</span><span class="na">setRight</span><span class="o">(</span><span class="n">successor</span><span class="o">);</span>
+              <span class="o">}</span>            
+              <span class="n">successor</span><span class="o">.</span><span class="na">setLeft</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">getLeft</span><span class="o">());</span>
+          <span class="o">}</span>        
+    <span class="o">}</span>
+  	
+  	<span class="c1">// 오른쪽 서브트리의 최소 값을 찾는다.</span>
+  	<span class="kd">public</span> <span class="nc">Node</span> <span class="nf">getSuccessor</span><span class="o">(</span><span class="nc">Node</span> <span class="n">deleleNode</span><span class="o">){</span>
+        <span class="nc">Node</span> <span class="n">successsor</span> <span class="o">=</span><span class="kc">null</span><span class="o">;</span>
+        <span class="nc">Node</span> <span class="n">successsorParent</span> <span class="o">=</span><span class="kc">null</span><span class="o">;</span>
+        <span class="nc">Node</span> <span class="n">current</span> <span class="o">=</span> <span class="n">deleleNode</span><span class="o">.</span><span class="na">getRight</span><span class="o">();</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">current</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+            <span class="n">successsorParent</span> <span class="o">=</span> <span class="n">successsor</span><span class="o">;</span>
+            <span class="n">successsor</span> <span class="o">=</span> <span class="n">current</span><span class="o">;</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">getLeft</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">successsor</span><span class="o">!=</span><span class="n">deleleNode</span><span class="o">.</span><span class="na">getRight</span><span class="o">()){</span>
+            <span class="n">successsorParent</span><span class="o">.</span><span class="na">setLeft</span><span class="o">(</span><span class="n">successsor</span><span class="o">.</span><span class="na">getRight</span><span class="o">());</span>
+            <span class="n">successsor</span><span class="o">.</span><span class="na">setRight</span><span class="o">(</span><span class="n">deleleNode</span><span class="o">.</span><span class="na">getRight</span><span class="o">());</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">successsor</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="힙">힙</h2>
+
+<p>우선순위를 위해 만들어진 자료구조</p>
+
+<p>우선순위 큐란?</p>
+
+<p>데이터들이 우선순위를 가지고 있고 우선순위가 높은 데이터가 먼저 나간다.</p>
+
+<p>힙이란 완전 이진 트리의 일종으로 우선순위 큐를 위하여 만들어진 자료구조이다. 여러개의 값들 중에서 최댓값이나 최솟값을 빠르게 찾아내도록 만들어진 자료구조이다.</p>
+
+<p>힙은 반정렬 상태를 유지한다.</p>
+
+<p>최대 힙 : 부모 노드의 키 값이 자식 노드의 키 값보다 크거나 같은 완전 이진트리</p>
+
+<p>최소 힙 : 부모 노드의 키 값이 자식 노드의 키 값보다 작거나 같은 완전 이진트리</p>
+
+<p>힙에서의 부모 노드와 자식 노드의 관계</p>
+
+<ul>
+  <li>왼쪽 자식의 인덱스 = (부모의 인덱스) * 2</li>
+  <li>오른쪽 자식의 인덱스 = (부모의 인덱스) * 2 + 1</li>
+  <li>부모의 인덱스 = (자식의 인덱스) / 2</li>
+</ul>
+
+<p>힙 삽입 : 힙에 데이터를 삽입하려고 하면 가장 마지막 자리에 공간을 생성하고 데이터를 넣는다. 하지만 넣어야 하는 데이터가 부모 노드보다 크다면 위치를 바꾸어 줘야 한다.</p>
+
+<p>힙 삭제 : 힙에서의 원소의 삭제는 원소를 제거하고 마지막 노드 원소를 루트원소로 올리고 두 서브 트리를 비교하여 더 큰 원소와 교환한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 힙 삽입</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">insertHeap</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">heap</span><span class="o">,</span> <span class="kt">int</span> <span class="n">size</span><span class="o">,</span> <span class="kt">int</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// heap의 배열과, size는 현 heap의 원소의 개수, item은 삽입 원소 </span>
+  <span class="k">if</span><span class="o">(</span><span class="n">size</span> <span class="o">==</span> <span class="n">heap</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 힙이 만원이 상태라면 종료 </span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"heep size 초과"</span><span class="o">);</span> 
+    <span class="k">return</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="o">++</span><span class="n">size</span><span class="o">;</span> <span class="c1">// 다음 item이 들어갈 원소 위치</span>
+  <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">break</span><span class="o">;</span>
+    <span class="o">}</span> <span class="c1">// 힙의 원소가 하나도 없었다면 반복문 탈출 </span>
+    <span class="k">if</span><span class="o">(</span><span class="n">item</span> <span class="o">&lt;</span> <span class="n">heap</span><span class="o">[</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="o">])</span> <span class="o">{</span>
+      <span class="k">break</span><span class="o">;</span>
+    <span class="o">}</span> <span class="c1">// 아이템이 부모 노드보다 작다면 반복문 탈출 </span>
+    <span class="n">heap</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">heap</span><span class="o">[</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="o">];</span> <span class="c1">// 부모노드의 키값을 자식노드로 이동 i /= 2; // i의 위치를 즉 원소가 들어갈 자리를 부모노드로 변경 </span>
+  <span class="o">}</span> 
+  <span class="n">heap</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">item</span><span class="o">;</span> <span class="c1">// 정해진 i위치에 item 삽입 </span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 힙 삭제</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">deleteHeap</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">heap</span><span class="o">,</span> <span class="kt">int</span> <span class="n">size</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//히프로부터 원소 삭제 </span>
+			<span class="c1">// heap은 배열, size는  원소의 개수</span>
+		
+		<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">size</span><span class="o">;</span> <span class="c1">// Heap안에 있는 마지막 원소의 다음 위치</span>
+		
+		<span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span><span class="k">return</span> <span class="mi">999</span><span class="o">;}</span> <span class="c1">// 삭제할 원소가 없다면  에러</span>
+		
+		<span class="kt">int</span> <span class="n">item</span> <span class="o">=</span> <span class="n">heap</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span> <span class="c1">// 삭제 노드를 item에 저장</span>
+		<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">heap</span><span class="o">[</span><span class="n">n</span><span class="o">];</span> <span class="c1">// 마지막 원소를 temp에 저장</span>
+		
+		<span class="n">n</span><span class="o">--;</span> <span class="c1">// 마지막 원소의 삭제</span>
+		<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">// 원소를 가르키는 변수 최초는 삭제하는 루트</span>
+		<span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="c1">// j변수는 i변수의 왼쪽 서브트리를 가르키는 변수</span>
+		
+		<span class="k">while</span><span class="o">(</span><span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//서브트리의 위치가 현 원소의 수보다 커진다면 힙의 크기를 초과 하니까 종료</span>
+			
+			<span class="k">if</span><span class="o">(</span><span class="n">j</span><span class="o">=</span> <span class="n">heap</span><span class="o">[</span><span class="n">j</span><span class="o">])</span> <span class="o">{</span> <span class="c1">// temp가 현 서브트리보다 크다는 것은 현 i위치가 원소의 위치가 맞다는 것이다.</span>
+				<span class="k">break</span><span class="o">;</span>
+			<span class="o">}</span>
+			
+			<span class="n">heap</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">heap</span><span class="o">[</span><span class="n">j</span><span class="o">];</span> <span class="c1">// 서브트리를 한 레벨 위로 이동</span>
+			<span class="n">i</span> <span class="o">=</span> <span class="n">j</span><span class="o">;</span> <span class="c1">// 비교를 할 노드의 위치를 바꿔줌</span>
+			<span class="n">j</span> <span class="o">*=</span><span class="mi">2</span><span class="o">;</span> <span class="c1">// j의 서브트리 위치를 이동한다.</span>
+		<span class="o">}</span>
+		
+		<span class="n">heap</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span> <span class="c1">//마지막 원소를 i위치에 넣어준다.</span>
+		<span class="k">return</span> <span class="n">item</span><span class="o">;</span>
+	<span class="o">}</span>
+
+
+<span class="err">출처</span><span class="o">:</span> <span class="nl">https:</span><span class="c1">//kingpodo.tistory.com/30 [킹포도의 코딩]</span>
+</code></pre></div></div>
+
+<h2 id="그래프">그래프</h2>
+
+<p>그래프 탐색</p>
+
+<p>DFS : 깊이 우선 탐색</p>
+
+<p>BFS : 너비 우선 탐색</p>
+
+<h2 id="선택-정렬">선택 정렬</h2>
+
+<p>첫번째 자료를 두번째 자료부터 마지막 자료까지 차례대로 비교하여 가장 큰 값을 찾아 첫 번째에 놓고,</p>
+
+<p>두번째 자료를 세번째 자료부터 마지막 자료까지 차례대로 비교하여 가장 큰 값을 찾아 두번째에 놓는작업을 반복한다.</p>
+
+<p>시간 복잡도 : O(n^2)</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ChoiceSort</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">5</span><span class="o">,</span><span class="mi">6</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">9</span><span class="o">,</span><span class="mi">4</span><span class="o">};</span>
+		<span class="kt">int</span> <span class="n">temp</span><span class="o">;</span>
+		
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">;</span>
+			<span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">max</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">])</span> <span class="o">{</span>
+					<span class="n">max</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+					<span class="n">index</span> <span class="o">=</span> <span class="n">j</span><span class="o">;</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			
+			<span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+			<span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">max</span><span class="o">;</span>
+			<span class="n">arr</span><span class="o">[</span><span class="n">index</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+		<span class="o">}</span>
+		
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">arr</span><span class="o">));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="버블-정렬">버블 정렬</h2>
+
+<p>서로 인접한 두 원소를 비교하여 정렬하는 알고리즘</p>
+
+<ul>
+  <li>
+    <p>인접한 2개의 레코드를 비교하여 크기가 순서대로 되어있지 않으면 서로 교환</p>
+
+    <ul>
+      <li>
+        <p>1번째와 2번째 비교, 교환</p>
+      </li>
+      <li>
+        <p>2번째 3번째 비교, 교환</p>
+      </li>
+      <li>
+        <p>3번째 4번째 비교, 교환</p>
+      </li>
+      <li>
+        <p>4번째 5번째 비교, 교환</p>
+      </li>
+      <li>
+        <p>다시 처음으로 돌아와서 1번째 2번째 비교, 교환</p>
+      </li>
+      <li>
+        <p>마지막은 빼고 3번째 4번째 비교, 교환 작업</p>
+      </li>
+      <li>
+        <p>반복</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>시간복잡도</p>
+
+    <ul>
+      <li>최상, 평균, 최악 모두 일정</li>
+      <li>O(n^2)</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BubbleSort</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">5</span><span class="o">,</span><span class="mi">6</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">9</span><span class="o">,</span><span class="mi">4</span><span class="o">};</span>
+		
+		<span class="kt">int</span> <span class="n">temp</span><span class="o">;</span>
+		
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
+					<span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+					<span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+					<span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">arr</span><span class="o">));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="퀵-정렬">퀵 정렬</h2>
+
+<h2 id="병합-정렬">병합 정렬</h2>
+
+<h2 id="힙-정렬">힙 정렬</h2>
+
+<h2 id="삽입-정렬">삽입 정렬</h2>
+
+<p>새로운 인덱스를 기존의 정렬된 카드 카드 사이의 올바른 자리를 찾아 삽입한다.</p>
+
+<p>자료 배열의 모든 요소를 앞에서부터 차례대로 이미 정렬된 배열 부분과 비교 하여, 자신의 위치를 찾아 삽입함으로써 정렬을 완성</p>
+
+<p><br /></p>
+
+<p>두번째 자료부터 시작하여 그 앞의 자료들과 비교하여 삽입할 위치를 지정한 후 자료를 뒤로 옮기고 지정한 자리에 자료를 삽입한다.</p>
+
+<p>자료가 삽입될 위치를 찾았다면 그 위치에 자료를 삽입 하기 위해 자료를 한 칸씩 이동시킨다.</p>
+
+<p><br /></p>
+
+<p>장점</p>
+
+<ul>
+  <li>안정한 정렬 방법이다.</li>
+  <li>대부분의 레코드가 이미 정렬되어 있는 경우 매우 효율적일 수 있다.</li>
+</ul>
+
+<p>단점</p>
+
+<ul>
+  <li>비교적 많은 레코드들의 이동이 포함된다.</li>
+  <li>레코드 수가 많고 레코드 크기가 클 경우에 적합하지 않다.</li>
+</ul>
+
+<p>시간복잡도</p>
+
+<ul>
+  <li>최선의 경우
+    <ul>
+      <li>이동 없이 1번의 비교만 이루어진다.</li>
+      <li>O(n)</li>
+    </ul>
+  </li>
+  <li>최악의 경우
+    <ul>
+      <li>O(n^2)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>&lt;/br&gt;</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">InsertSort</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">5</span><span class="o">,</span><span class="mi">6</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">9</span><span class="o">,</span><span class="mi">4</span><span class="o">};</span>
+		<span class="kt">int</span> <span class="n">temp</span><span class="o">;</span>
+		
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+			<span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+			
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="err">—</span><span class="o">)</span> <span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">key</span><span class="o">)</span> <span class="o">{</span>
+					<span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+				<span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+					<span class="n">index</span> <span class="o">=</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span>
+					<span class="k">break</span><span class="o">;</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			
+			<span class="n">arr</span><span class="o">[</span><span class="n">index</span><span class="o">]</span> <span class="o">=</span> <span class="n">key</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">arr</span><span class="o">));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="기수-정렬">기수 정렬</h2>
+
+<h2 id="트리-정렬">트리 정렬</h2>
+
+<h2 id="해싱">해싱</h2>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#data" class="page__taxonomy-item" rel="tag">data</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#structure" class="page__taxonomy-item" rel="tag">structure</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#data" class="page__taxonomy-item" rel="tag">data</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#structure" class="page__taxonomy-item" rel="tag">structure</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-10-03T05:40:00+09:00">October 03, 2019</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/network/%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/" class="pagination--pager" title="컴퓨터 네트워크 정리
+">이전</a>
+    
+    
+      <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" class="pagination--pager" title="운영체제 정리
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/%EC%8A%A4%ED%82%AC%ED%8A%B8%EB%A6%AC/" rel="permalink">스킬트리 (level2)
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">스킬트리
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%9A%94%EC%95%BD/" rel="permalink">os 요약
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스 vs 스레드
+
+  프로세스
+    
+      컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램
+      운영체제로부터 시스템 자원을 할당받는 작업의 단위
+      
+    
+  
+  스레드
+    
+      프로세스 내에서 실행되는 여러 흐름의 단위
+      프...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" rel="permalink">운영체제 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스와 스레드의 차이
+프로세스
+실행 중인 프로그램
+메모리에 적재되어 cpu의 할당을 받을 수 있는 것
+OS로부터 주소공간, 파일, 메모리 등을 할당받은 것
+함수의 매개변수, 임시 자료를 갖는 프로세스 스택, 전역 변수를 수록하는 데이터 섹션 포함
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/network/%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/" rel="permalink">컴퓨터 네트워크 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">컴퓨터 네트워크
+
+
+HTTP의 GET과 POST비교
+둘 다 http 프로토콜을 이용해서 서버에 무엇인 가를 요청할 때 사용하는 방식
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+        
+      
+        
+          <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 dongkwon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

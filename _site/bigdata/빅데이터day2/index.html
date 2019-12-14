@@ -1,0 +1,672 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>데이터 프레임 - Gobook</title>
+<meta name="description" content="데이터 프레임">
+
+
+  <meta name="author" content="dongkwon">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko">
+<meta property="og:site_name" content="Gobook">
+<meta property="og:title" content="데이터 프레임">
+<meta property="og:url" content="http://localhost:4000/bigdata/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0day2/">
+
+
+  <meta property="og:description" content="데이터 프레임">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-05-30T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/bigdata/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0day2/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "dongkwon",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Gobook Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Gobook
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tag</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile.jpg" alt="dongkwon" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">dongkwon</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Gwangju, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+            <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="데이터 프레임">
+    <meta itemprop="description" content="데이터 프레임">
+    <meta itemprop="datePublished" content="May 30, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">데이터 프레임
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="데이터-프레임">데이터 프레임</h2>
+
+<h3 id="데이터-프레임-1">데이터 프레임</h3>
+
+<ul>
+  <li>열 : 속성 &gt; 컬럼,변수</li>
+  <li>행 : 한 사람의 정보 &gt; Row,Case
+    <ul>
+      <li>한 명에 대한 데이터는 가로 한 줄에 나열</li>
+      <li>데이터가 크다 = 행이 많다 or 열이 많다
+        <ul>
+          <li>행이 많다 &gt; 컴퓨터가 느려짐 &gt; 고사양 장비</li>
+          <li>열이 많다 &gt; 분석 방법의 한계 &gt; 고급 분석 방법</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="데이터-프레임-만들기">데이터 프레임 만들기</h3>
+<ol>
+  <li>변수 만들기
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">english</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">90</span><span class="p">,</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="m">60</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">)</span><span class="w">
+ </span><span class="n">math</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="m">60</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">20</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>데이터 프레임 만들기
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">df_midterm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">english</span><span class="p">,</span><span class="w"> </span><span class="n">math</span><span class="p">)</span><span class="w">
+ </span><span class="n">df_midterm</span><span class="w">
+
+   </span><span class="n">english</span><span class="w"> </span><span class="n">math</span><span class="w">
+ </span><span class="m">1</span><span class="w">      </span><span class="m">90</span><span class="w">   </span><span class="m">50</span><span class="w">
+ </span><span class="m">2</span><span class="w">      </span><span class="m">80</span><span class="w">   </span><span class="m">60</span><span class="w">
+ </span><span class="m">3</span><span class="w">      </span><span class="m">60</span><span class="w">  </span><span class="m">100</span><span class="w">
+ </span><span class="m">4</span><span class="w">      </span><span class="m">70</span><span class="w">   </span><span class="m">20</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>데이터 프레임에 정보 추가
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+ </span><span class="n">df_midterm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">english</span><span class="p">,</span><span class="w"> </span><span class="n">math</span><span class="p">,</span><span class="w"> </span><span class="n">class</span><span class="p">)</span><span class="w">
+ </span><span class="n">df_midterm</span><span class="w">
+
+   </span><span class="n">english</span><span class="w"> </span><span class="n">math</span><span class="w"> </span><span class="n">class</span><span class="w">
+ </span><span class="m">1</span><span class="w">      </span><span class="m">90</span><span class="w">   </span><span class="m">50</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">2</span><span class="w">      </span><span class="m">80</span><span class="w">   </span><span class="m">60</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">3</span><span class="w">      </span><span class="m">60</span><span class="w">  </span><span class="m">100</span><span class="w">     </span><span class="m">2</span><span class="w">
+ </span><span class="m">4</span><span class="w">      </span><span class="m">70</span><span class="w">   </span><span class="m">20</span><span class="w">     </span><span class="m">2</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>분석
+    <ul>
+      <li>mean() : 평균
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">mean</span><span class="p">(</span><span class="n">df_midterm</span><span class="o">$</span><span class="n">english</span><span class="p">)</span><span class="w"> </span><span class="c1"># english 평균 산출</span><span class="w">
+  </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">75</span><span class="w">
+
+  </span><span class="n">mean</span><span class="p">(</span><span class="n">df_midterm</span><span class="o">$</span><span class="n">math</span><span class="p">)</span><span class="w"> </span><span class="c1"># math 평균</span><span class="w">
+  </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">57.5</span><span class="w">
+</span></code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>데이터 프레임 한번에 만들기
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">df_midterm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">english</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">90</span><span class="p">,</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="m">60</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">),</span><span class="w">
+                      </span><span class="n">math</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="m">60</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">20</span><span class="p">),</span><span class="w">
+                      </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">))</span><span class="w">
+ </span><span class="n">df_midterm</span><span class="w">
+
+   </span><span class="n">english</span><span class="w"> </span><span class="n">math</span><span class="w"> </span><span class="n">class</span><span class="w">
+ </span><span class="m">1</span><span class="w">      </span><span class="m">90</span><span class="w">   </span><span class="m">50</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">2</span><span class="w">      </span><span class="m">80</span><span class="w">   </span><span class="m">60</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">3</span><span class="w">      </span><span class="m">60</span><span class="w">  </span><span class="m">100</span><span class="w">     </span><span class="m">2</span><span class="w">
+ </span><span class="m">4</span><span class="w">      </span><span class="m">70</span><span class="w">   </span><span class="m">20</span><span class="w">     </span><span class="m">2</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="외부-데이터-이용">외부 데이터 이용</h3>
+
+<ul>
+  <li>엑셀 파일
+    <ol>
+      <li>프로젝트 폴더에 엑셀 파일 삽입</li>
+      <li>readxl 패키지 설치, 로드</li>
+      <li>엑셀 파일 불러오기
+        <ul>
+          <li>read_excel() : 엑셀 파일을 데이터 프레임으로 만들어줌</li>
+          <li>read_excel &lt;- read_excel(“excel_exam.xlsx”)</li>
+          <li>xlsx까지 기입해야 함</li>
+        </ul>
+      </li>
+      <li>분석
+        <ul>
+          <li>mean(df_exam$english)
+        - 엑셀 파일 첫 번째 행이 변수 명이 아니면 read_excel()이 엑셀 파일의 첫번 째 행을 변수명으로 인식하기 때문에 첫 번째 행이 유실 될 수 있음</li>
+          <li>col_names = F 파라미터를 사용하여 첫 번째 행을 데이터로 인식해서 불러오고, 변수명은 ‘X__숫자’ 형태로 불러오게 한다</li>
+          <li>col_name : 열 이름을 가져올 것인가? (논리형)
+            <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">df_exam_novar</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read_excel</span><span class="p">(</span><span class="s2">"excel_exam_novar.xlsx"</span><span class="p">,</span><span class="w"> </span><span class="n">col_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span><span class="w">
+ </span><span class="n">df_exam_novar</span><span class="w">
+
+ </span><span class="n">...1</span><span class="w">  </span><span class="n">...2</span><span class="w">  </span><span class="n">...3</span><span class="w">  </span><span class="n">...4</span><span class="w">  </span><span class="n">...5</span><span class="w">
+</span><span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">    </span><span class="m">50</span><span class="w">    </span><span class="m">98</span><span class="w">    </span><span class="m">50</span><span class="w">
+ </span><span class="m">2</span><span class="w">     </span><span class="m">2</span><span class="w">     </span><span class="m">1</span><span class="w">    </span><span class="m">60</span><span class="w">    </span><span class="m">97</span><span class="w">    </span><span class="m">60</span><span class="w">
+ </span><span class="m">3</span><span class="w">     </span><span class="m">3</span><span class="w">     </span><span class="m">2</span><span class="w">    </span><span class="m">25</span><span class="w">    </span><span class="m">80</span><span class="w">    </span><span class="m">65</span><span class="w">
+ </span><span class="m">4</span><span class="w">     </span><span class="m">4</span><span class="w">     </span><span class="m">2</span><span class="w">    </span><span class="m">50</span><span class="w">    </span><span class="m">89</span><span class="w">    </span><span class="m">98</span><span class="w">
+ </span><span class="m">5</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">3</span><span class="w">    </span><span class="m">20</span><span class="w">    </span><span class="m">98</span><span class="w">    </span><span class="m">15</span><span class="w">
+ </span><span class="m">6</span><span class="w">     </span><span class="m">6</span><span class="w">     </span><span class="m">3</span><span class="w">    </span><span class="m">50</span><span class="w">    </span><span class="m">98</span><span class="w">    </span><span class="m">45</span><span class="w">
+ </span><span class="m">7</span><span class="w">     </span><span class="m">7</span><span class="w">     </span><span class="m">4</span><span class="w">    </span><span class="m">46</span><span class="w">    </span><span class="m">98</span><span class="w">    </span><span class="m">65</span><span class="w">
+ </span><span class="m">8</span><span class="w">     </span><span class="m">8</span><span class="w">     </span><span class="m">4</span><span class="w">    </span><span class="m">48</span><span class="w">    </span><span class="m">87</span><span class="w">    </span><span class="m">12</span><span class="w">
+</span></code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>CSV 파일로 저장
+    <ul>
+      <li>R 내장함수 wirte.csv()를 이용해 저장</li>
+      <li>write.csv(프레임명, file = “파일명.csv”)</li>
+    </ul>
+  </li>
+  <li>RData 파일
+    <ol>
+      <li>RData 파일로 저장
+        <ul>
+          <li>save(프레임명, file = “파일명.rda”)</li>
+          <li>프로젝트 폴더에 생성됨</li>
+        </ul>
+      </li>
+      <li>불러오기
+        <ul>
+          <li>load(“파일명.rda”)</li>
+        </ul>
+      </li>
+      <li>데이터 프레임 삭제 : rm()
+        <ul>
+          <li>read.csv(), read_excel()은 변수에 할당해서 사용</li>
+          <li>load는 저장할 때 사용한 데이터 프레임이 자동으로 만들어 짐</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#bigdata" class="page__taxonomy-item" rel="tag">bigdata</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-05-30T00:00:00+09:00">May 30, 2019</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/bigdata/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0day1/" class="pagination--pager" title="R
+">이전</a>
+    
+    
+      <a href="/bigdata/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%B4%88/" class="pagination--pager" title="데이터 분석 기초
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/%EC%8A%A4%ED%82%AC%ED%8A%B8%EB%A6%AC/" rel="permalink">스킬트리 (level2)
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">스킬트리
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%9A%94%EC%95%BD/" rel="permalink">os 요약
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스 vs 스레드
+
+  프로세스
+    
+      컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램
+      운영체제로부터 시스템 자원을 할당받는 작업의 단위
+      
+    
+  
+  스레드
+    
+      프로세스 내에서 실행되는 여러 흐름의 단위
+      프...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" rel="permalink">운영체제 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스와 스레드의 차이
+프로세스
+실행 중인 프로그램
+메모리에 적재되어 cpu의 할당을 받을 수 있는 것
+OS로부터 주소공간, 파일, 메모리 등을 할당받은 것
+함수의 매개변수, 임시 자료를 갖는 프로세스 스택, 전역 변수를 수록하는 데이터 섹션 포함
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/data/structure/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="permalink">자료구조 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Array
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+        
+      
+        
+          <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 dongkwon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

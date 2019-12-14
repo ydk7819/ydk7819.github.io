@@ -1,0 +1,669 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>지도 시각화 - Gobook</title>
+<meta name="description" content="미국 주별 강력 범죄율 단계 구분도 만들기지역별 통계치를 색깔의 차이로 표현한 지도를 단계구분도라고 한다단계 구분도를 보면 인구나 소득 같은 특성이 지역별로 얼마나 다른지 쉽게 이해할 수 있다">
+
+
+  <meta name="author" content="dongkwon">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko">
+<meta property="og:site_name" content="Gobook">
+<meta property="og:title" content="지도 시각화">
+<meta property="og:url" content="http://localhost:4000/bigdata/%EC%A7%80%EB%8F%84-%EC%8B%9C%EA%B0%81%ED%99%94/">
+
+
+  <meta property="og:description" content="미국 주별 강력 범죄율 단계 구분도 만들기지역별 통계치를 색깔의 차이로 표현한 지도를 단계구분도라고 한다단계 구분도를 보면 인구나 소득 같은 특성이 지역별로 얼마나 다른지 쉽게 이해할 수 있다">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-06-04T01:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/bigdata/%EC%A7%80%EB%8F%84-%EC%8B%9C%EA%B0%81%ED%99%94/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "dongkwon",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Gobook Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Gobook
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tag</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile.jpg" alt="dongkwon" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">dongkwon</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Gwangju, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+            <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="지도 시각화">
+    <meta itemprop="description" content="미국 주별 강력 범죄율 단계 구분도 만들기지역별 통계치를 색깔의 차이로 표현한 지도를 단계구분도라고 한다단계 구분도를 보면 인구나 소득 같은 특성이 지역별로 얼마나 다른지 쉽게 이해할 수 있다">
+    <meta itemprop="datePublished" content="June 04, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">지도 시각화
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="미국-주별-강력-범죄율-단계-구분도-만들기">미국 주별 강력 범죄율 단계 구분도 만들기</h2>
+<p>지역별 통계치를 색깔의 차이로 표현한 지도를 단계구분도라고 한다
+<br />단계 구분도를 보면 인구나 소득 같은 특성이 지역별로 얼마나 다른지 쉽게 이해할 수 있다</p>
+
+<h3 id="미국-주별-강력-범죄율-단계-구분도-만들기-1">미국 주별 강력 범죄율 단계 구분도 만들기</h3>
+<ol>
+  <li>패키지 - <code class="highlighter-rouge">ggiraphExtra</code></li>
+  <li>미국 주별 범죄 데이터 - <code class="highlighter-rouge">USArrests</code>
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">head</span><span class="p">(</span><span class="n">USArrests</span><span class="p">)</span><span class="w">
+            </span><span class="n">Murder</span><span class="w"> </span><span class="n">Assault</span><span class="w"> </span><span class="n">UrbanPop</span><span class="w"> </span><span class="n">Rape</span><span class="w">
+ </span><span class="n">Alabama</span><span class="w">      </span><span class="m">13.2</span><span class="w">     </span><span class="m">236</span><span class="w">       </span><span class="m">58</span><span class="w"> </span><span class="m">21.2</span><span class="w">
+ </span><span class="n">Alaska</span><span class="w">       </span><span class="m">10.0</span><span class="w">     </span><span class="m">263</span><span class="w">       </span><span class="m">48</span><span class="w"> </span><span class="m">44.5</span><span class="w">
+ </span><span class="n">Arizona</span><span class="w">       </span><span class="m">8.1</span><span class="w">     </span><span class="m">294</span><span class="w">       </span><span class="m">80</span><span class="w"> </span><span class="m">31.0</span><span class="w">
+ </span><span class="n">Arkansas</span><span class="w">      </span><span class="m">8.8</span><span class="w">     </span><span class="m">190</span><span class="w">       </span><span class="m">50</span><span class="w"> </span><span class="m">19.5</span><span class="w">
+ </span><span class="n">California</span><span class="w">    </span><span class="m">9.0</span><span class="w">     </span><span class="m">276</span><span class="w">       </span><span class="m">91</span><span class="w"> </span><span class="m">40.6</span><span class="w">
+ </span><span class="n">Colorado</span><span class="w">      </span><span class="m">7.9</span><span class="w">     </span><span class="m">204</span><span class="w">       </span><span class="m">78</span><span class="w"> </span><span class="m">38.7</span><span class="w">
+</span></code></pre></div>    </div>
+    <p><br />
+ 지역명 변수가 따로 없고, 행이름이 지역명으로 되어있기 때문에 행이름을 state 변수로 바꿔서 새 프레임을 만들어야 한다
+ <br /></p>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">library</span><span class="p">(</span><span class="n">tibble</span><span class="p">)</span><span class="w">
+ </span><span class="n">crime</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rownames_to_column</span><span class="p">(</span><span class="n">USArrests</span><span class="p">,</span><span class="w"> </span><span class="n">var</span><span class="o">=</span><span class="s2">"state"</span><span class="p">)</span><span class="w">
+ </span><span class="n">crime</span><span class="o">$</span><span class="n">state</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tolower</span><span class="p">(</span><span class="n">crime</span><span class="o">$</span><span class="n">state</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>미국 주 지도 데이터 준비
+ <br />
+ 단계 구분도를 만들려면 지역별 위도, 경도 정보가 있는 지도 데이터가 필요하다.
+    <ul>
+      <li><code class="highlighter-rouge">maps</code> 패키지에 <code class="highlighter-rouge">state</code> 데이터 사용</li>
+      <li><code class="highlighter-rouge">ggplot2</code>의 <code class="highlighter-rouge">map_date()</code>를 이용해 데이터 프레임 형태로 불러온다
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"maps"</span><span class="p">)</span><span class="w">
+ </span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+ </span><span class="n">states_map</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">map_data</span><span class="p">(</span><span class="s2">"state"</span><span class="p">)</span><span class="w">
+</span></code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>단계 구분도 만들기
+    <ul>
+      <li><code class="highlighter-rouge">ggiraphExtra</code>의 <code class="highlighter-rouge">ggChoropleth()</code></li>
+      <li><code class="highlighter-rouge">mapproj</code>패키지 필요
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"mapproj"</span><span class="p">)</span><span class="w">
+ </span><span class="n">ggChoropleth</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">crime</span><span class="p">,</span><span class="w">
+          </span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Murder</span><span class="p">,</span><span class="w">
+              </span><span class="n">map_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="p">),</span><span class="w">
+              </span><span class="n">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">states_map</span><span class="p">)</span><span class="w">
+</span></code></pre></div>        </div>
+        <p><img src="/assets/images/chp11-1.PNG" alt="chp11-1" /></p>
+      </li>
+    </ul>
+  </li>
+  <li>인터랙티브 단계 구분도 만들기
+    <ul>
+      <li><code class="highlighter-rouge">interactive</code>파라미터를 TRUE로 설정하면 마우스 움직임에 반응하는 인터랙티브 단계 구분도를 만들 수 있다
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"mapproj"</span><span class="p">)</span><span class="w">
+ </span><span class="n">ggChoropleth</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">crime</span><span class="p">,</span><span class="w">
+          </span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Murder</span><span class="p">,</span><span class="w">
+              </span><span class="n">map_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="p">),</span><span class="w">
+              </span><span class="n">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">states_map</span><span class="p">,</span><span class="w">
+              </span><span class="n">interactive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
+</span></code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="대한민국-시도별-인구-결핵-환자-수-단계-구분도-만들기">대한민국 시도별 인구, 결핵 환자 수 단계 구분도 만들기</h2>
+
+<h3 id="대한민국-시도별-인구-단계-구분도-만들기">대한민국 시도별 인구 단계 구분도 만들기</h3>
+
+<ol>
+  <li>패키지 준비
+    <ul>
+      <li><code class="highlighter-rouge">stringi</code> : <code class="highlighter-rouge">kormaps2014</code> 패키지 이용에 필요</li>
+      <li><code class="highlighter-rouge">devtools</code> : <code class="highlighter-rouge">install_github()</code>를 이용해 패키지 개발자가 깃 허브에 공유한 패키지를 설치할 수 있다
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"stringi"</span><span class="p">)</span><span class="w">
+ </span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"devtools"</span><span class="p">)</span><span class="w">
+ </span><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"cardiomoon/kormaps2014"</span><span class="p">)</span><span class="w">
+ </span><span class="n">library</span><span class="p">(</span><span class="n">kormaps2014</span><span class="p">)</span><span class="w">
+</span></code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>대한민국 시도별 인구 데이터 준비
+    <ul>
+      <li><code class="highlighter-rouge">korpop1</code> : 2015년 센서스 데이터(시도별)</li>
+      <li><code class="highlighter-rouge">korpop1</code>데이터의 인코딩이 UTF-8 이기 때문에 <code class="highlighter-rouge">changeCode()</code>를 이용해 깨지지 않고 출력된다</li>
+    </ul>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">str</span><span class="p">(</span><span class="n">changeCode</span><span class="p">(</span><span class="n">korpop1</span><span class="p">))</span><span class="w">
+
+ </span><span class="s1">'data.frame'</span><span class="o">:</span><span class="w">	</span><span class="m">17</span><span class="w"> </span><span class="n">obs.</span><span class="w"> </span><span class="n">of</span><span class="w">  </span><span class="m">25</span><span class="w"> </span><span class="n">variables</span><span class="o">:</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">C행정구역별_읍면동</span><span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"'11"</span><span class="w"> </span><span class="s2">"'21"</span><span class="w"> </span><span class="s2">"'22"</span><span class="w"> </span><span class="s2">"'23"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">행정구역별_읍면동</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"서울특별시"</span><span class="w"> </span><span class="s2">"부산광역시"</span><span class="w"> </span><span class="s2">"대구광역시"</span><span class="w"> </span><span class="s2">"인천광역시"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">시점</span><span class="w">                   </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"2015"</span><span class="w"> </span><span class="s2">"2015"</span><span class="w"> </span><span class="s2">"2015"</span><span class="w"> </span><span class="s2">"2015"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">총인구_명</span><span class="w">              </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"9904312"</span><span class="w"> </span><span class="s2">"3448737"</span><span class="w"> </span><span class="s2">"2466052"</span><span class="w"> </span><span class="s2">"2890451"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">남자_명</span><span class="w">                </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"4859535"</span><span class="w"> </span><span class="s2">"1701347"</span><span class="w"> </span><span class="s2">"1228511"</span><span class="w"> </span><span class="s2">"1455017"</span><span class="w"> </span><span class="n">...</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>변수명을 영문자로 바꿔준다
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
+ </span><span class="n">korpop1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rename</span><span class="p">(</span><span class="n">korpop1</span><span class="p">,</span><span class="w">
+                 </span><span class="n">pop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">총인구_명</span><span class="p">,</span><span class="w">
+                 </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">행정구역별_읍면동</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>대한민국 시도 지도 데이터 준비
+    <ul>
+      <li><code class="highlighter-rouge">str(changeCode(kormap1))</code></li>
+    </ul>
+  </li>
+  <li>단계 구분도 만들기
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">ggChoropleth</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">korpop1</span><span class="p">,</span><span class="w">        </span><span class="c1"># 지도에 표현할 데이터</span><span class="w">
+             </span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pop</span><span class="p">,</span><span class="w">         </span><span class="c1"># 색깔로 표현할 변수</span><span class="w">
+                 </span><span class="n">map_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">code</span><span class="p">,</span><span class="w">      </span><span class="c1"># 지역 기준 변수</span><span class="w">
+                 </span><span class="n">tooltip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">),</span><span class="w">    </span><span class="c1"># 지도 위에 표시할 지역명</span><span class="w">
+             </span><span class="n">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kormap1</span><span class="p">,</span><span class="w">          </span><span class="c1"># 지도 데이터</span><span class="w">
+             </span><span class="n">interactive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">        </span><span class="c1"># 인터랙티브</span><span class="w">
+</span></code></pre></div>    </div>
+    <p><img src="/assets/images/chp11-2.PNG" alt="chp11-2" /></p>
+  </li>
+</ol>
+
+<h3 id="대한민국-시도별-결핵-환자-수-단계-구분도-만들기">대한민국 시도별 결핵 환자 수 단계 구분도 만들기</h3>
+<p><br />
+<code class="highlighter-rouge">kormaps2014</code>에 지역별 결핵 환자 수에 대한 정보를 담고 있는 <code class="highlighter-rouge">tbc</code>데이터가 있다
+<br /></p>
+<ul>
+  <li><code class="highlighter-rouge">tbc</code>의 <code class="highlighter-rouge">NewPts</code>변수를 이용해 시도별 결핵 환자 수 단계 구분도를 만들 수 있다
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">ggChoropleth</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tbc</span><span class="p">,</span><span class="w">
+              </span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewPts</span><span class="p">,</span><span class="w">
+                  </span><span class="n">map_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">code</span><span class="p">,</span><span class="w">
+                  </span><span class="n">tooltip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">),</span><span class="w">
+              </span><span class="n">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kormap1</span><span class="p">,</span><span class="w">
+              </span><span class="n">interactive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#bigdata" class="page__taxonomy-item" rel="tag">bigdata</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-06-04T01:00:00+09:00">June 04, 2019</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/bigdata/%ED%85%8D%EC%8A%A4%ED%8A%B8%EB%A7%88%EC%9D%B4%EB%8B%9D/" class="pagination--pager" title="텍스트 마이닝
+">이전</a>
+    
+    
+      <a href="/bigdata/%EC%9D%B8%ED%84%B0%EB%9E%99%ED%8B%B0%EB%B8%8C%EA%B7%B8%EB%9E%98%ED%94%84/" class="pagination--pager" title="인터랙티브 그래프
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/%EC%8A%A4%ED%82%AC%ED%8A%B8%EB%A6%AC/" rel="permalink">스킬트리 (level2)
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">스킬트리
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%9A%94%EC%95%BD/" rel="permalink">os 요약
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스 vs 스레드
+
+  프로세스
+    
+      컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램
+      운영체제로부터 시스템 자원을 할당받는 작업의 단위
+      
+    
+  
+  스레드
+    
+      프로세스 내에서 실행되는 여러 흐름의 단위
+      프...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" rel="permalink">운영체제 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스와 스레드의 차이
+프로세스
+실행 중인 프로그램
+메모리에 적재되어 cpu의 할당을 받을 수 있는 것
+OS로부터 주소공간, 파일, 메모리 등을 할당받은 것
+함수의 매개변수, 임시 자료를 갖는 프로세스 스택, 전역 변수를 수록하는 데이터 섹션 포함
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/data/structure/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="permalink">자료구조 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Array
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+        
+      
+        
+          <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 dongkwon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

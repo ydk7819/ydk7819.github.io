@@ -1,0 +1,754 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>데이터 분석 기초 - Gobook</title>
+<meta name="description" content="데이터 분석 기초">
+
+
+  <meta name="author" content="dongkwon">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko">
+<meta property="og:site_name" content="Gobook">
+<meta property="og:title" content="데이터 분석 기초">
+<meta property="og:url" content="http://localhost:4000/bigdata/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%B4%88/">
+
+
+  <meta property="og:description" content="데이터 분석 기초">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-05-30T01:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/bigdata/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%B4%88/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "dongkwon",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Gobook Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Gobook
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tag</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile.jpg" alt="dongkwon" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">dongkwon</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Gwangju, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+            <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="데이터 분석 기초">
+    <meta itemprop="description" content="데이터 분석 기초">
+    <meta itemprop="datePublished" content="May 30, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">데이터 분석 기초
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="데이터-분석-기초">데이터 분석 기초</h2>
+
+<h3 id="데이터-파악">데이터 파악</h3>
+<p><code class="highlighter-rouge">데이터가 주어졌을 때 가장 먼저 하는 일은 데이터의 전반적인 구조를 파악하는 것</code></p>
+
+<ul>
+  <li>
+    <p>데이터 파악 함수</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>함수</th>
+          <th>기능</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>head()</td>
+          <td>데이터 앞부분 출력</td>
+        </tr>
+        <tr>
+          <td>tail()</td>
+          <td>데이터 뒷부분 출력</td>
+        </tr>
+        <tr>
+          <td>View()</td>
+          <td>뷰어 창에서 데이터 확인</td>
+        </tr>
+        <tr>
+          <td>dim()</td>
+          <td>데이터 차원 출력</td>
+        </tr>
+        <tr>
+          <td>str()</td>
+          <td>데이터 속성 출력</td>
+        </tr>
+        <tr>
+          <td>summary()</td>
+          <td>요약 통계량 출력</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>head()
+    <ul>
+      <li>head(프레임명): 앞에서부터 6행까지 출력</li>
+      <li>head(프레임명, 10) : 앞에서부터 10행까지 출력</li>
+    </ul>
+  </li>
+  <li>tail() : 데이터 뒷부분을 출력 - head와 동일</li>
+  <li>View() : 뷰어 창에서 데이터 확인</li>
+  <li>dim() : 데이터가 몇 행, 몇 열로 구성되어 있는지 출력</li>
+  <li>str() : 속성 확인
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="s1">'data.frame'</span><span class="o">:</span><span class="w">	</span><span class="m">20</span><span class="w"> </span><span class="n">obs.</span><span class="w"> </span><span class="n">of</span><span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="n">variables</span><span class="o">:</span><span class="w">
+  </span><span class="o">$</span><span class="w"> </span><span class="n">id</span><span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="n">...</span><span class="w">
+  </span><span class="o">$</span><span class="w"> </span><span class="n">class</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="n">...</span><span class="w">
+  </span><span class="o">$</span><span class="w"> </span><span class="n">math</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">50</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="m">45</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="m">90</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="n">...</span><span class="w">
+  </span><span class="o">$</span><span class="w"> </span><span class="n">english</span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">98</span><span class="w"> </span><span class="m">97</span><span class="w"> </span><span class="m">86</span><span class="w"> </span><span class="m">98</span><span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="m">89</span><span class="w"> </span><span class="m">90</span><span class="w"> </span><span class="m">78</span><span class="w"> </span><span class="m">98</span><span class="w"> </span><span class="m">98</span><span class="w"> </span><span class="n">...</span><span class="w">
+  </span><span class="o">$</span><span class="w"> </span><span class="n">science</span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">50</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="m">78</span><span class="w"> </span><span class="m">58</span><span class="w"> </span><span class="m">65</span><span class="w"> </span><span class="m">98</span><span class="w"> </span><span class="m">45</span><span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">45</span><span class="w"> </span><span class="n">...</span><span class="w">
+</span></code></pre></div>    </div>
+    <ul>
+      <li>20개 관측지 (obs, Observation = row)</li>
+      <li>5개 변수 (variables)</li>
+      <li>각 행에 변수 이름과 속성이 표시되고, 그 뒤에 변수에 들어있는 값을 몇개 나열</li>
+    </ul>
+  </li>
+  <li>summary() : 요약 통계량 산출
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">      </span><span class="n">id</span><span class="w">            </span><span class="n">class</span><span class="w">        </span><span class="n">math</span><span class="w">      
+  </span><span class="n">Min.</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="m">1.00</span><span class="w">   </span><span class="n">Min.</span><span class="w">   </span><span class="o">:</span><span class="m">1</span><span class="w">   </span><span class="n">Min.</span><span class="w">   </span><span class="o">:</span><span class="m">20.00</span><span class="w">  
+  </span><span class="m">1</span><span class="n">st</span><span class="w"> </span><span class="n">Qu.</span><span class="o">:</span><span class="w"> </span><span class="m">5.75</span><span class="w">   </span><span class="m">1</span><span class="n">st</span><span class="w"> </span><span class="n">Qu.</span><span class="o">:</span><span class="m">2</span><span class="w">   </span><span class="m">1</span><span class="n">st</span><span class="w"> </span><span class="n">Qu.</span><span class="o">:</span><span class="m">45.75</span><span class="w">  
+  </span><span class="n">Median</span><span class="w"> </span><span class="o">:</span><span class="m">10.50</span><span class="w">   </span><span class="n">Median</span><span class="w"> </span><span class="o">:</span><span class="m">3</span><span class="w">   </span><span class="n">Median</span><span class="w"> </span><span class="o">:</span><span class="m">54.00</span><span class="w">  
+  </span><span class="n">Mean</span><span class="w">   </span><span class="o">:</span><span class="m">10.50</span><span class="w">   </span><span class="n">Mean</span><span class="w">   </span><span class="o">:</span><span class="m">3</span><span class="w">   </span><span class="n">Mean</span><span class="w">   </span><span class="o">:</span><span class="m">57.45</span><span class="w">  
+  </span><span class="m">3</span><span class="n">rd</span><span class="w"> </span><span class="n">Qu.</span><span class="o">:</span><span class="m">15.25</span><span class="w">   </span><span class="m">3</span><span class="n">rd</span><span class="w"> </span><span class="n">Qu.</span><span class="o">:</span><span class="m">4</span><span class="w">   </span><span class="m">3</span><span class="n">rd</span><span class="w"> </span><span class="n">Qu.</span><span class="o">:</span><span class="m">75.75</span><span class="w">  
+  </span><span class="n">Max.</span><span class="w">   </span><span class="o">:</span><span class="m">20.00</span><span class="w">   </span><span class="n">Max.</span><span class="w">   </span><span class="o">:</span><span class="m">5</span><span class="w">   </span><span class="n">Max.</span><span class="w">   </span><span class="o">:</span><span class="m">90.00</span><span class="w">  
+      </span><span class="n">english</span><span class="w">        </span><span class="n">science</span><span class="w">     
+  </span><span class="n">Min.</span><span class="w">   </span><span class="o">:</span><span class="m">56.0</span><span class="w">   </span><span class="n">Min.</span><span class="w">   </span><span class="o">:</span><span class="m">12.00</span><span class="w">  
+  </span><span class="m">1</span><span class="n">st</span><span class="w"> </span><span class="n">Qu.</span><span class="o">:</span><span class="m">78.0</span><span class="w">   </span><span class="m">1</span><span class="n">st</span><span class="w"> </span><span class="n">Qu.</span><span class="o">:</span><span class="m">45.00</span><span class="w">  
+  </span><span class="n">Median</span><span class="w"> </span><span class="o">:</span><span class="m">86.5</span><span class="w">   </span><span class="n">Median</span><span class="w"> </span><span class="o">:</span><span class="m">62.50</span><span class="w">  
+  </span><span class="n">Mean</span><span class="w">   </span><span class="o">:</span><span class="m">84.9</span><span class="w">   </span><span class="n">Mean</span><span class="w">   </span><span class="o">:</span><span class="m">59.45</span><span class="w">  
+  </span><span class="m">3</span><span class="n">rd</span><span class="w"> </span><span class="n">Qu.</span><span class="o">:</span><span class="m">98.0</span><span class="w">   </span><span class="m">3</span><span class="n">rd</span><span class="w"> </span><span class="n">Qu.</span><span class="o">:</span><span class="m">78.00</span><span class="w">  
+  </span><span class="n">Max.</span><span class="w">   </span><span class="o">:</span><span class="m">98.0</span><span class="w">   </span><span class="n">Max.</span><span class="w">   </span><span class="o">:</span><span class="m">98.00</span><span class="w">  
+</span></code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>출력값</th>
+          <th>통계량</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Min</td>
+          <td>최솟값</td>
+          <td>가장 작은 값</td>
+        </tr>
+        <tr>
+          <td>1st Qu</td>
+          <td>1사분위수</td>
+          <td>하위25%지점에 위치하는 값</td>
+        </tr>
+        <tr>
+          <td>Median</td>
+          <td>중앙값</td>
+          <td>중앙에 위치하는 값</td>
+        </tr>
+        <tr>
+          <td>Mean</td>
+          <td>평균</td>
+          <td>모든 값을 더해 값의 개수로 나눈 값</td>
+        </tr>
+        <tr>
+          <td>3rd Qu</td>
+          <td>3사분위수</td>
+          <td>하위75%지점에 위치하는 값</td>
+        </tr>
+        <tr>
+          <td>Max</td>
+          <td>최댓값</td>
+          <td>가장 큰값</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h3 id="변수명-바꾸기">변수명 바꾸기</h3>
+<p>데이터의 특징을 파악한 후 분석전에 변수명을 수정하여 데이터를 쉽게 다루게 한다</p>
+<ul>
+  <li>dplyr패키지의 rename()
+    <ol>
+      <li>dplyr 패키지 설치/로드
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">install.pakages</span><span class="p">(</span><span class="s2">"dplyr"</span><span class="p">)</span><span class="w">
+ </span><span class="n">lilbrary</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
+</span></code></pre></div>        </div>
+      </li>
+      <li>데이터 프레임 복사본 만들기
+        <ul>
+          <li>원본을 보유하기 위해 복사본을 만든다</li>
+          <li>데이터를 변형할 때는 복사본을 만들어 사용하는 것이 좋음
+            <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">df_new</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df_raw</span><span class="w">
+</span></code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>변수명 바꾸기
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">df_new</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rename</span><span class="p">(</span><span class="n">df_new</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">var2</span><span class="p">)</span><span class="w"> </span><span class="c1"># var2를 v2로 수정</span><span class="w">
+</span></code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="파생변수-만들기">파생변수 만들기</h3>
+<p>변수를 조합하거나 함수를 적용해 새 변수를 만들어 분석할 수도 있다</p>
+
+<ul>
+  <li>파생변수 만들기
+    <ol>
+      <li>변수 생성
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">var1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">8</span><span class="p">),</span><span class="w">
+                 </span><span class="n">var2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">1</span><span class="p">))</span><span class="w">
+</span></code></pre></div>        </div>
+      </li>
+      <li>var1과 var2를 더한 파생변수 var_sum 생성
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">var_sum</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">var1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">var2</span><span class="w">
+ </span><span class="n">df</span><span class="w">
+
+   </span><span class="n">var1</span><span class="w"> </span><span class="n">var2</span><span class="w"> </span><span class="n">var_sum</span><span class="w">
+ </span><span class="m">1</span><span class="w">    </span><span class="m">4</span><span class="w">    </span><span class="m">2</span><span class="w">       </span><span class="m">6</span><span class="w">
+ </span><span class="m">2</span><span class="w">    </span><span class="m">3</span><span class="w">    </span><span class="m">6</span><span class="w">       </span><span class="m">9</span><span class="w">
+ </span><span class="m">3</span><span class="w">    </span><span class="m">8</span><span class="w">    </span><span class="m">1</span><span class="w">       </span><span class="m">9</span><span class="w">
+</span></code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+  <li>조건문으로 파생변수 만들기
+    <ol>
+      <li>기준값 정하기
+        <ul>
+          <li>평균값, 중앙값 확인 &gt; summary()활용</li>
+          <li>값의 빈도를 막대그래프로 표현 : 히스토그램 &gt; hist()</li>
+          <li>요약 통계량과 히스토그램을 통해 조건을 줄 기준값을 정한다</li>
+        </ul>
+      </li>
+      <li>합격 판정 변수 만들기
+        <ul>
+          <li>조건문 함수 사용</li>
+          <li>ifelse(<code class="highlighter-rouge">조건</code>, <code class="highlighter-rouge">true일때</code>, <code class="highlighter-rouge">false일때</code>)
+            <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">mpg</span><span class="o">$</span><span class="n">test</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ifelse</span><span class="p">(</span><span class="n">mpg</span><span class="o">$</span><span class="n">total</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="s2">"pass"</span><span class="p">,</span><span class="w"> </span><span class="s2">"fail"</span><span class="p">)</span><span class="w">
+ </span><span class="n">head</span><span class="p">(</span><span class="n">mpg</span><span class="p">)</span><span class="w">
+
+</span><span class="n">manufacturer</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="n">displ</span><span class="w"> </span><span class="n">year</span><span class="w"> </span><span class="n">cyl</span><span class="w">      </span><span class="n">trans</span><span class="w"> </span><span class="n">drv</span><span class="w"> </span><span class="n">cty</span><span class="w"> </span><span class="n">hwy</span><span class="w"> </span><span class="n">fl</span><span class="w">   </span><span class="n">class</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="n">test</span><span class="w">
+ </span><span class="m">1</span><span class="w">         </span><span class="n">audi</span><span class="w">    </span><span class="n">a4</span><span class="w">   </span><span class="m">1.8</span><span class="w"> </span><span class="m">1999</span><span class="w">   </span><span class="m">4</span><span class="w">   </span><span class="n">auto</span><span class="p">(</span><span class="n">l5</span><span class="p">)</span><span class="w">   </span><span class="n">f</span><span class="w">  </span><span class="m">18</span><span class="w">  </span><span class="m">29</span><span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="n">compact</span><span class="w">  </span><span class="m">23.5</span><span class="w"> </span><span class="n">pass</span><span class="w">
+ </span><span class="m">2</span><span class="w">         </span><span class="n">audi</span><span class="w">    </span><span class="n">a4</span><span class="w">   </span><span class="m">1.8</span><span class="w"> </span><span class="m">1999</span><span class="w">   </span><span class="m">4</span><span class="w"> </span><span class="n">manual</span><span class="p">(</span><span class="n">m5</span><span class="p">)</span><span class="w">   </span><span class="n">f</span><span class="w">  </span><span class="m">21</span><span class="w">  </span><span class="m">29</span><span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="n">compact</span><span class="w">  </span><span class="m">25.0</span><span class="w"> </span><span class="n">pass</span><span class="w">
+ </span><span class="m">3</span><span class="w">         </span><span class="n">audi</span><span class="w">    </span><span class="n">a4</span><span class="w">   </span><span class="m">2.0</span><span class="w"> </span><span class="m">2008</span><span class="w">   </span><span class="m">4</span><span class="w"> </span><span class="n">manual</span><span class="p">(</span><span class="n">m6</span><span class="p">)</span><span class="w">   </span><span class="n">f</span><span class="w">  </span><span class="m">20</span><span class="w">  </span><span class="m">31</span><span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="n">compact</span><span class="w">  </span><span class="m">25.5</span><span class="w"> </span><span class="n">pass</span><span class="w">
+ </span><span class="m">4</span><span class="w">         </span><span class="n">audi</span><span class="w">    </span><span class="n">a4</span><span class="w">   </span><span class="m">2.0</span><span class="w"> </span><span class="m">2008</span><span class="w">   </span><span class="m">4</span><span class="w">   </span><span class="n">auto</span><span class="p">(</span><span class="n">av</span><span class="p">)</span><span class="w">   </span><span class="n">f</span><span class="w">  </span><span class="m">21</span><span class="w">  </span><span class="m">30</span><span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="n">compact</span><span class="w">  </span><span class="m">25.5</span><span class="w"> </span><span class="n">pass</span><span class="w">
+ </span><span class="m">5</span><span class="w">         </span><span class="n">audi</span><span class="w">    </span><span class="n">a4</span><span class="w">   </span><span class="m">2.8</span><span class="w"> </span><span class="m">1999</span><span class="w">   </span><span class="m">6</span><span class="w">   </span><span class="n">auto</span><span class="p">(</span><span class="n">l5</span><span class="p">)</span><span class="w">   </span><span class="n">f</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">26</span><span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="n">compact</span><span class="w">  </span><span class="m">21.0</span><span class="w"> </span><span class="n">pass</span><span class="w">
+ </span><span class="m">6</span><span class="w">         </span><span class="n">audi</span><span class="w">    </span><span class="n">a4</span><span class="w">   </span><span class="m">2.8</span><span class="w"> </span><span class="m">1999</span><span class="w">   </span><span class="m">6</span><span class="w"> </span><span class="n">manual</span><span class="p">(</span><span class="n">m5</span><span class="p">)</span><span class="w">   </span><span class="n">f</span><span class="w">  </span><span class="m">18</span><span class="w">  </span><span class="m">26</span><span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="n">compact</span><span class="w">  </span><span class="m">22.0</span><span class="w"> </span><span class="n">pass</span><span class="w">
+</span></code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>빈도표로 합격 판정 수 파악
+        <ul>
+          <li>빈도표 : 변수의 각 값들이 몇 개씩 존재하는지, 데이터의 개수를 나타낸 표</li>
+          <li>table()
+ ```r
+ table(mpg$test)</li>
+        </ul>
+
+        <p>fail pass
+ 106  128
+ ```</p>
+      </li>
+      <li>막대 그래프로 빈도 표현
+        <ul>
+          <li>ggplot2 패키지 - qplot() : 값의 개수를 막대의 길이로 표현</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#bigdata" class="page__taxonomy-item" rel="tag">bigdata</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-05-30T01:00:00+09:00">May 30, 2019</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/bigdata/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0day2/" class="pagination--pager" title="데이터 프레임
+">이전</a>
+    
+    
+      <a href="/bigdata/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B0%80%EA%B3%B5/" class="pagination--pager" title="데이터 가공
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/%EC%8A%A4%ED%82%AC%ED%8A%B8%EB%A6%AC/" rel="permalink">스킬트리 (level2)
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">스킬트리
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%9A%94%EC%95%BD/" rel="permalink">os 요약
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스 vs 스레드
+
+  프로세스
+    
+      컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램
+      운영체제로부터 시스템 자원을 할당받는 작업의 단위
+      
+    
+  
+  스레드
+    
+      프로세스 내에서 실행되는 여러 흐름의 단위
+      프...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" rel="permalink">운영체제 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스와 스레드의 차이
+프로세스
+실행 중인 프로그램
+메모리에 적재되어 cpu의 할당을 받을 수 있는 것
+OS로부터 주소공간, 파일, 메모리 등을 할당받은 것
+함수의 매개변수, 임시 자료를 갖는 프로세스 스택, 전역 변수를 수록하는 데이터 섹션 포함
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/data/structure/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="permalink">자료구조 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Array
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+        
+      
+        
+          <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 dongkwon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,744 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>데이터 가공 - Gobook</title>
+<meta name="description" content="데이터 전처리분석에 적합하게 데이터를 가공하는 작업 - dplyr 활용">
+
+
+  <meta name="author" content="dongkwon">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko">
+<meta property="og:site_name" content="Gobook">
+<meta property="og:title" content="데이터 가공">
+<meta property="og:url" content="http://localhost:4000/bigdata/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B0%80%EA%B3%B5/">
+
+
+  <meta property="og:description" content="데이터 전처리분석에 적합하게 데이터를 가공하는 작업 - dplyr 활용">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-05-30T02:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/bigdata/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B0%80%EA%B3%B5/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "dongkwon",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Gobook Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Gobook
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tag</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile.jpg" alt="dongkwon" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">dongkwon</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Gwangju, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+            <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="데이터 가공">
+    <meta itemprop="description" content="데이터 전처리분석에 적합하게 데이터를 가공하는 작업 - dplyr 활용">
+    <meta itemprop="datePublished" content="May 30, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">데이터 가공
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="데이터-전처리">데이터 전처리</h2>
+<p><code class="highlighter-rouge">분석에 적합하게 데이터를 가공하는 작업 - dplyr 활용</code></p>
+
+<h3 id="조건에-맞는-데이터만-출력---filter">조건에 맞는 데이터만 출력 - filter()</h3>
+<ol>
+  <li>class가 1인 데이터만 출력
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">filter</span><span class="p">(</span><span class="n">class</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+   </span><span class="n">id</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="n">math</span><span class="w"> </span><span class="n">english</span><span class="w"> </span><span class="n">science</span><span class="w">
+ </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">   </span><span class="m">50</span><span class="w">      </span><span class="m">98</span><span class="w">      </span><span class="m">50</span><span class="w">
+ </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">     </span><span class="m">1</span><span class="w">   </span><span class="m">60</span><span class="w">      </span><span class="m">97</span><span class="w">      </span><span class="m">60</span><span class="w">
+ </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">     </span><span class="m">1</span><span class="w">   </span><span class="m">45</span><span class="w">      </span><span class="m">86</span><span class="w">      </span><span class="m">78</span><span class="w">
+ </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">     </span><span class="m">1</span><span class="w">   </span><span class="m">30</span><span class="w">      </span><span class="m">98</span><span class="w">      </span><span class="m">58</span><span class="w">
+</span></code></pre></div>    </div>
+    <ul>
+      <li>dplyr 패키지는 %&gt;% 기호를 이용하 함수들을 나열하는 방식으로 코드 작성</li>
+      <li>class == 1 : class 변수의 값이 1인 행</li>
+      <li>함수의 파라미터 지정할 때는 등호를 한 번 쓰고, 같다를 의미할 때는 두 번쓴다</li>
+    </ul>
+  </li>
+  <li>class가 1이 아닌 데이터 출력
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">filter</span><span class="p">(</span><span class="n">class</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>부등호를 이용해 초과, 미만, 이상, 이하 조건을 걸 수 있다.</li>
+  <li>and : &amp;</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>or :</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>%in% : 변수의 값이 지정한 조건 목록에 해당하는지 확인
+    <ul>
+      <li>1, 3, 5반에 해당하면 추출
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">filter</span><span class="p">(</span><span class="n">class</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">5</span><span class="p">))</span><span class="w">
+ </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">filter</span><span class="p">(</span><span class="n">class</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="w">
+</span></code></pre></div>        </div>
+      </li>
+      <li>두 결과는 같다</li>
+    </ul>
+  </li>
+  <li>추출한 데이터도 &lt;- 기호를 이용해 변수에 저장할 수 있다</li>
+</ol>
+
+<h3 id="필요한-변수만-추출">필요한 변수만 추출</h3>
+<ul>
+  <li>math추출
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">select</span><span class="p">(</span><span class="n">math</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>여러변수 추출
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">select</span><span class="p">(</span><span class="n">class</span><span class="p">,</span><span class="n">math</span><span class="p">,</span><span class="n">english</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>변수 제외
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">select</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="p">,</span><span class="o">-</span><span class="n">english</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>filter()와 select() 조합하기
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="c1"># class가 1인 행만 추출하여 english호출</span><span class="w">
+  </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+   </span><span class="n">filter</span><span class="p">(</span><span class="n">class</span><span class="o">==</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+   </span><span class="n">select</span><span class="p">(</span><span class="n">english</span><span class="p">)</span><span class="w">    
+</span></code></pre></div>    </div>
+  </li>
+  <li>일부만 출력 : head() 조합
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+   </span><span class="n">select</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">math</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+   </span><span class="n">head</span><span class="w">
+</span></code></pre></div>    </div>
+    <h3 id="정렬">정렬</h3>
+  </li>
+  <li>오름차순 정렬
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">arrange</span><span class="p">(</span><span class="n">math</span><span class="p">)</span><span class="w"> </span><span class="c1">#math 오름차순 정렬</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>내림차순 정렬
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">arrange</span><span class="p">(</span><span class="n">desc</span><span class="p">(</span><span class="n">math</span><span class="p">))</span><span class="w"> </span><span class="c1">#math 내림차순 정렬</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>여러 변수기준 정렬
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">arrange</span><span class="p">(</span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">math</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+    <ul>
+      <li>class 오름차순 정렬 후, class 안에서 math 오름차순 정렬</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="파생변수-추가">파생변수 추가</h3>
+<ul>
+  <li>총합 변수 만들어서 추가
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+   </span><span class="n">mutate</span><span class="p">(</span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">english</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">science</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+   </span><span class="n">head</span><span class="w">
+
+    </span><span class="n">id</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="n">math</span><span class="w"> </span><span class="n">english</span><span class="w"> </span><span class="n">science</span><span class="w"> </span><span class="n">total</span><span class="w">
+  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">   </span><span class="m">50</span><span class="w">      </span><span class="m">98</span><span class="w">      </span><span class="m">50</span><span class="w">   </span><span class="m">198</span><span class="w">
+  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">     </span><span class="m">1</span><span class="w">   </span><span class="m">60</span><span class="w">      </span><span class="m">97</span><span class="w">      </span><span class="m">60</span><span class="w">   </span><span class="m">217</span><span class="w">
+  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">     </span><span class="m">1</span><span class="w">   </span><span class="m">45</span><span class="w">      </span><span class="m">86</span><span class="w">      </span><span class="m">78</span><span class="w">   </span><span class="m">209</span><span class="w">
+  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">     </span><span class="m">1</span><span class="w">   </span><span class="m">30</span><span class="w">      </span><span class="m">98</span><span class="w">      </span><span class="m">58</span><span class="w">   </span><span class="m">186</span><span class="w">
+  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">     </span><span class="m">2</span><span class="w">   </span><span class="m">25</span><span class="w">      </span><span class="m">80</span><span class="w">      </span><span class="m">65</span><span class="w">   </span><span class="m">170</span><span class="w">
+  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">     </span><span class="m">2</span><span class="w">   </span><span class="m">50</span><span class="w">      </span><span class="m">89</span><span class="w">      </span><span class="m">98</span><span class="w">   </span><span class="m">237</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>여러 파생변수 한 번에 추가
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+   </span><span class="n">mutate</span><span class="p">(</span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">english</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">science</span><span class="p">,</span><span class="w">
+          </span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">math</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">english</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">science</span><span class="p">)</span><span class="o">/</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+   </span><span class="n">head</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="집단별로-요약">집단별로 요약</h3>
+<ul>
+  <li>summarise()
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">summarise</span><span class="p">(</span><span class="n">mean_math</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">math</span><span class="p">))</span><span class="w">
+
+    </span><span class="n">mean_math</span><span class="w">
+  </span><span class="m">1</span><span class="w">     </span><span class="m">57.45</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>집단별로 요약 - group_by()
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">exam</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+   </span><span class="n">group_by</span><span class="p">(</span><span class="n">class</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+   </span><span class="n">summarise</span><span class="p">(</span><span class="n">mean_math</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">math</span><span class="p">))</span><span class="w">
+
+  </span><span class="c1"># A tibble: 5 x 2</span><span class="w">
+    </span><span class="n">class</span><span class="w"> </span><span class="n">mean_math</span><span class="w">
+    </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w">     </span><span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span><span class="w">
+  </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">      </span><span class="m">46.2</span><span class="w">
+  </span><span class="m">2</span><span class="w">     </span><span class="m">2</span><span class="w">      </span><span class="m">61.2</span><span class="w">
+  </span><span class="m">3</span><span class="w">     </span><span class="m">3</span><span class="w">      </span><span class="m">45</span><span class="w">  
+  </span><span class="m">4</span><span class="w">     </span><span class="m">4</span><span class="w">      </span><span class="m">56.8</span><span class="w">
+  </span><span class="m">5</span><span class="w">     </span><span class="m">5</span><span class="w">      </span><span class="m">78</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="데이터-합치기">데이터 합치기</h3>
+
+<ul>
+  <li>left join : 가로로 합치기
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  test1
+  id midterm
+  1  1      60
+  2  2      80
+  3  3      70
+  4  4      90
+  5  5      85
+
+  id final
+  1  1    70
+  2  2    83
+  3  3    65
+  4  4    95
+  5  5    80
+</code></pre></div>    </div>
+    <ul>
+      <li>id를 기준으로 합쳐 total에 할당
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">total</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">left_join</span><span class="p">(</span><span class="n">test1</span><span class="p">,</span><span class="w"> </span><span class="n">test2</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"id"</span><span class="p">)</span><span class="w">
+  </span><span class="n">total</span><span class="w">
+
+</span><span class="n">id</span><span class="w"> </span><span class="n">midterm</span><span class="w"> </span><span class="n">final</span><span class="w">
+  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">      </span><span class="m">60</span><span class="w">    </span><span class="m">70</span><span class="w">
+  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">      </span><span class="m">80</span><span class="w">    </span><span class="m">83</span><span class="w">
+  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">      </span><span class="m">70</span><span class="w">    </span><span class="m">65</span><span class="w">
+  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">      </span><span class="m">90</span><span class="w">    </span><span class="m">95</span><span class="w">
+  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">      </span><span class="m">85</span><span class="w">    </span><span class="m">80</span><span class="w">
+</span></code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>bind_rows() : 세로로 합치기
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  group_a
+    id test
+  1  1   60
+  2  2   80
+  3  3   70
+  4  4   90
+  5  5   85
+
+  group_b
+    id test
+  1  6   70
+  2  7   83
+  3  8   65
+  4  9   95
+  5 10   80
+</code></pre></div>    </div>
+    <ul>
+      <li>데이터 합쳐서 group_all에 할당
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">group_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bind_rows</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span><span class="w"> </span><span class="n">group_b</span><span class="p">)</span><span class="w">
+  </span><span class="n">group_all</span><span class="w">
+
+ </span><span class="n">id</span><span class="w"> </span><span class="n">test</span><span class="w">
+  </span><span class="m">1</span><span class="w">   </span><span class="m">1</span><span class="w">   </span><span class="m">60</span><span class="w">
+  </span><span class="m">2</span><span class="w">   </span><span class="m">2</span><span class="w">   </span><span class="m">80</span><span class="w">
+  </span><span class="m">3</span><span class="w">   </span><span class="m">3</span><span class="w">   </span><span class="m">70</span><span class="w">
+  </span><span class="m">4</span><span class="w">   </span><span class="m">4</span><span class="w">   </span><span class="m">90</span><span class="w">
+  </span><span class="m">5</span><span class="w">   </span><span class="m">5</span><span class="w">   </span><span class="m">85</span><span class="w">
+  </span><span class="m">6</span><span class="w">   </span><span class="m">6</span><span class="w">   </span><span class="m">70</span><span class="w">
+  </span><span class="m">7</span><span class="w">   </span><span class="m">7</span><span class="w">   </span><span class="m">83</span><span class="w">
+  </span><span class="m">8</span><span class="w">   </span><span class="m">8</span><span class="w">   </span><span class="m">65</span><span class="w">
+  </span><span class="m">9</span><span class="w">   </span><span class="m">9</span><span class="w">   </span><span class="m">95</span><span class="w">
+  </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w">   </span><span class="m">80</span><span class="w">
+</span></code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#bigdata" class="page__taxonomy-item" rel="tag">bigdata</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-05-30T02:00:00+09:00">May 30, 2019</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/bigdata/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%B4%88/" class="pagination--pager" title="데이터 분석 기초
+">이전</a>
+    
+    
+      <a href="/bigdata/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%A0%95%EC%A0%9C/" class="pagination--pager" title="데이터정제
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/%EC%8A%A4%ED%82%AC%ED%8A%B8%EB%A6%AC/" rel="permalink">스킬트리 (level2)
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">스킬트리
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%9A%94%EC%95%BD/" rel="permalink">os 요약
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스 vs 스레드
+
+  프로세스
+    
+      컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램
+      운영체제로부터 시스템 자원을 할당받는 작업의 단위
+      
+    
+  
+  스레드
+    
+      프로세스 내에서 실행되는 여러 흐름의 단위
+      프...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" rel="permalink">운영체제 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스와 스레드의 차이
+프로세스
+실행 중인 프로그램
+메모리에 적재되어 cpu의 할당을 받을 수 있는 것
+OS로부터 주소공간, 파일, 메모리 등을 할당받은 것
+함수의 매개변수, 임시 자료를 갖는 프로세스 스택, 전역 변수를 수록하는 데이터 섹션 포함
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/data/structure/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="permalink">자료구조 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Array
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+        
+      
+        
+          <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 dongkwon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

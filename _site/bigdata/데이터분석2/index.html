@@ -1,0 +1,668 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>한국복지패널데이터분석2 - Gobook</title>
+<meta name="description" content="나이와 월급의 관계  분석절차          변수 검토 및 전처리 : 나이, 월급      변수 간 관계 분석 : 나이에 따른 월급 평균표, 그래프만들기        나이 변수 검토 및 전처리                  변수 검토하기       - 태어난 연도를 이용해서 나이 변수를 만든다          전처리       - 코드표 » 태어난 연도 : 1900 ~ 2014, 모름/무응답 : 9999       - 결측치 없음          파생변수 만들기 - 나이       - 2015년 조사 자료이므로 나이 = 2015 - 태어난 연도 + 1              welfare$age &lt;- 2015 - welfare$birth + 1  gplot(welfare$age)                                    나이와 월급 관계 분석                    나이에 따른 월급 평균표 만들기              age_income &lt;- welfare %&gt;% filter(!is.na(income)) %&gt;% group_by(age) %&gt;% summarise(mean_income = mean(income))                                그래프 만들기              ggplot(data = age_income, aes(x = age, y = mean_income)) + geom_line()                                                      ">
+
+
+  <meta name="author" content="dongkwon">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko">
+<meta property="og:site_name" content="Gobook">
+<meta property="og:title" content="한국복지패널데이터분석2">
+<meta property="og:url" content="http://localhost:4000/bigdata/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D2/">
+
+
+  <meta property="og:description" content="나이와 월급의 관계  분석절차          변수 검토 및 전처리 : 나이, 월급      변수 간 관계 분석 : 나이에 따른 월급 평균표, 그래프만들기        나이 변수 검토 및 전처리                  변수 검토하기       - 태어난 연도를 이용해서 나이 변수를 만든다          전처리       - 코드표 » 태어난 연도 : 1900 ~ 2014, 모름/무응답 : 9999       - 결측치 없음          파생변수 만들기 - 나이       - 2015년 조사 자료이므로 나이 = 2015 - 태어난 연도 + 1              welfare$age &lt;- 2015 - welfare$birth + 1  gplot(welfare$age)                                    나이와 월급 관계 분석                    나이에 따른 월급 평균표 만들기              age_income &lt;- welfare %&gt;% filter(!is.na(income)) %&gt;% group_by(age) %&gt;% summarise(mean_income = mean(income))                                그래프 만들기              ggplot(data = age_income, aes(x = age, y = mean_income)) + geom_line()                                                      ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-06-01T00:20:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/bigdata/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D2/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "dongkwon",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Gobook Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Gobook
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tag</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile.jpg" alt="dongkwon" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">dongkwon</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Gwangju, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+            <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="한국복지패널데이터분석2">
+    <meta itemprop="description" content="나이와 월급의 관계  분석절차          변수 검토 및 전처리 : 나이, 월급      변수 간 관계 분석 : 나이에 따른 월급 평균표, 그래프만들기        나이 변수 검토 및 전처리                  변수 검토하기       - 태어난 연도를 이용해서 나이 변수를 만든다          전처리       - 코드표 » 태어난 연도 : 1900 ~ 2014, 모름/무응답 : 9999       - 결측치 없음          파생변수 만들기 - 나이       - 2015년 조사 자료이므로 나이 = 2015 - 태어난 연도 + 1              welfare$age &lt;- 2015 - welfare$birth + 1  gplot(welfare$age)                                    나이와 월급 관계 분석                    나이에 따른 월급 평균표 만들기              age_income &lt;- welfare %&gt;% filter(!is.na(income)) %&gt;% group_by(age) %&gt;% summarise(mean_income = mean(income))                                그래프 만들기              ggplot(data = age_income, aes(x = age, y = mean_income)) + geom_line()                                                      ">
+    <meta itemprop="datePublished" content="June 01, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">한국복지패널데이터분석2
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="나이와-월급의-관계">나이와 월급의 관계</h2>
+<ul>
+  <li>분석절차
+    <ol>
+      <li>변수 검토 및 전처리 : 나이, 월급</li>
+      <li>변수 간 관계 분석 : 나이에 따른 월급 평균표, 그래프만들기
+        <h3 id="나이-변수-검토-및-전처리">나이 변수 검토 및 전처리</h3>
+        <ol>
+          <li>변수 검토하기
+       - 태어난 연도를 이용해서 나이 변수를 만든다</li>
+          <li>전처리
+       - 코드표 » 태어난 연도 : 1900 ~ 2014, 모름/무응답 : 9999
+       - 결측치 없음</li>
+          <li>파생변수 만들기 - 나이
+       - 2015년 조사 자료이므로 나이 = 2015 - 태어난 연도 + 1
+            <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">welfare</span><span class="o">$</span><span class="n">age</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">welfare</span><span class="o">$</span><span class="n">birth</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w">
+  </span><span class="n">gplot</span><span class="p">(</span><span class="n">welfare</span><span class="o">$</span><span class="n">age</span><span class="p">)</span><span class="w">
+</span></code></pre></div>            </div>
+            <p><br /><img src="/assets/images/chp9-3.PNG" alt="chp9-3" /></p>
+            <h3 id="나이와-월급-관계-분석">나이와 월급 관계 분석</h3>
+          </li>
+          <li>나이에 따른 월급 평균표 만들기
+            <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">age_income</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">welfare</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+ </span><span class="n">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">income</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+ </span><span class="n">group_by</span><span class="p">(</span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+ </span><span class="n">summarise</span><span class="p">(</span><span class="n">mean_income</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">income</span><span class="p">))</span><span class="w">
+</span></code></pre></div>            </div>
+          </li>
+          <li>그래프 만들기
+            <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age_income</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean_income</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_line</span><span class="p">()</span><span class="w">
+</span></code></pre></div>            </div>
+            <p><br /><img src="/assets/images/chp9-4.PNG" alt="chp9-4" /></p>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="연령대-및-성별-월급-차이">연령대 및 성별 월급 차이</h2>
+<ul>
+  <li>분석절차
+    <ol>
+      <li>변수 검토 및 전처리 : 연령대, 성별, 월급</li>
+      <li>변수 간 관계 분석 : 연령대 및 성별 월급 평균표, 그래프 만들기
+        <h3 id="연령대-및-성별-월급-차이-분석">연령대 및 성별 월급 차이 분석</h3>
+        <ol>
+          <li>연령대 및 성별 월급 평균표 만들기
+            <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">sex_income</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">welfare</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+ </span><span class="n">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">income</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+ </span><span class="n">group_by</span><span class="p">(</span><span class="n">ageg</span><span class="p">,</span><span class="w"> </span><span class="n">sex</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+ </span><span class="n">summarise</span><span class="p">(</span><span class="n">mean_income</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">income</span><span class="p">))</span><span class="w">
+ </span><span class="n">sex_income</span><span class="w">
+</span></code></pre></div>            </div>
+          </li>
+          <li>그래프 만들기
+            <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sex_income</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ageg</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean_income</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="n">sex</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+ </span><span class="n">geom_col</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+ </span><span class="n">scale_x_discrete</span><span class="p">(</span><span class="n">limits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"young"</span><span class="p">,</span><span class="s2">"middle"</span><span class="p">,</span><span class="s2">"old"</span><span class="p">))</span><span class="w">
+</span></code></pre></div>            </div>
+            <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   - fill : 막대가 성별에 따라 다른 색이 나오도록 함
+   - scale_x_discrete(limits = c()) : 연령대 순으로 정렬   &lt;br&gt;![chp9-5](/assets/images/chp9-5.PNG)   ```r   ggplot(data = sex_income, aes(x = ageg, y = mean_income, fill=sex)) +  geom_col(position = "dodge") +  scale_x_discrete(limits = c("young","middle","old"))   ```
+   - position = "dodge" : 성별에 따라 막대를 분리함   &lt;br&gt;![chp9-6](/assets/images/chp9-6.PNG)
+</code></pre></div>            </div>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="직업별-월급-차이">직업별 월급 차이</h2>
+<ul>
+  <li>분석절차
+    <ol>
+      <li>변수 검토 및 전처리 : 직업, 월급</li>
+      <li>변수 간 관계 분석 : 직업별 월급 평균표 만들기, 그래프 만들기
+        <h3 id="직업-변수-검토-및-전처리">직업 변수 검토 및 전처리</h3>
+        <ol>
+          <li>변수 검토하기 : code_job은 직업코드로 이름이 아니기 때문에 직업 명칭 변수를 만들어야 한다</li>
+          <li>전처리
+       - 직업분류코드가 정리된 시트 불러오기
+            <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">library</span><span class="p">(</span><span class="n">readxl</span><span class="p">)</span><span class="w">
+ </span><span class="n">list_job</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read_excel</span><span class="p">(</span><span class="s2">"Koweps_Codebook.xlsx"</span><span class="p">,</span><span class="w"> </span><span class="n">col_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="n">sheet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span></code></pre></div>            </div>
+          </li>
+          <li>left_join()을 이용해 job변수를 welfare에 결합 - 공통으로 들어가 있는 code_job변수를 이용</li>
+        </ol>
+      </li>
+    </ol>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">welfare</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">left_join</span><span class="p">(</span><span class="n">welfare</span><span class="p">,</span><span class="w"> </span><span class="n">list_job</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"code_job"</span><span class="p">)</span><span class="w">
+
+  </span><span class="n">welfare</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+      </span><span class="n">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">code_job</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+      </span><span class="n">select</span><span class="p">(</span><span class="n">code_job</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+      </span><span class="n">head</span><span class="p">()</span><span class="w">
+
+     </span><span class="n">code_job</span><span class="w">                                </span><span class="n">job</span><span class="w">
+  </span><span class="m">1</span><span class="w">       </span><span class="m">942</span><span class="w">                   </span><span class="n">경비원</span><span class="w"> </span><span class="n">및</span><span class="w"> </span><span class="n">검표원</span><span class="w">
+  </span><span class="m">2</span><span class="w">       </span><span class="m">762</span><span class="w">                             </span><span class="n">전기공</span><span class="w">
+  </span><span class="m">3</span><span class="w">       </span><span class="m">530</span><span class="w"> </span><span class="n">방문</span><span class="w"> </span><span class="n">노점</span><span class="w"> </span><span class="n">및</span><span class="w"> </span><span class="n">통신</span><span class="w"> </span><span class="n">판매</span><span class="w"> </span><span class="n">관련</span><span class="w"> </span><span class="n">종사자</span><span class="w">
+  </span><span class="m">4</span><span class="w">       </span><span class="m">999</span><span class="w">        </span><span class="n">기타</span><span class="w"> </span><span class="n">서비스관련</span><span class="w"> </span><span class="n">단순</span><span class="w"> </span><span class="n">종사원</span><span class="w">
+  </span><span class="m">5</span><span class="w">       </span><span class="m">312</span><span class="w">                    </span><span class="n">경영관련</span><span class="w"> </span><span class="n">사무원</span><span class="w">
+  </span><span class="m">6</span><span class="w">       </span><span class="m">254</span><span class="w">             </span><span class="n">문리</span><span class="w"> </span><span class="n">기술</span><span class="w"> </span><span class="n">및</span><span class="w"> </span><span class="n">예능</span><span class="w"> </span><span class="n">강사</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="직업별-월급-차이-분석">직업별 월급 차이 분석</h3>
+
+<ol>
+  <li>
+    <p>직업별 월급 평균표 만들기</p>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">job_income</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">welfare</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+     </span><span class="n">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">job</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">income</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+     </span><span class="n">group_by</span><span class="p">(</span><span class="n">job</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+     </span><span class="n">summarise</span><span class="p">(</span><span class="n">mean_income</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">income</span><span class="p">))</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>월급을 내림차순 정렬, 상위 10개 추출
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">top10</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">job_income</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+     </span><span class="n">arrange</span><span class="p">(</span><span class="n">desc</span><span class="p">(</span><span class="n">mean_income</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+     </span><span class="n">head</span><span class="p">(</span><span class="m">10</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>그래프 만들기
+    <ul>
+      <li>coord_flip() : 막대를 오른쪽으로 90도 회전
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">top10</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reorder</span><span class="p">(</span><span class="n">job</span><span class="p">,</span><span class="w"> </span><span class="n">mean_income</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean_income</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_col</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">coord_flip</span><span class="p">()</span><span class="w">
+</span></code></pre></div>        </div>
+        <p><br /><img src="/assets/images/chp9-7.PNG" alt="chp9-7" /></p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#bigdata" class="page__taxonomy-item" rel="tag">bigdata</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-06-01T00:20:00+09:00">June 01, 2019</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/bigdata/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D/" class="pagination--pager" title="한국복지패널데이터분석
+">이전</a>
+    
+    
+      <a href="/bigdata/%ED%85%8D%EC%8A%A4%ED%8A%B8%EB%A7%88%EC%9D%B4%EB%8B%9D/" class="pagination--pager" title="텍스트 마이닝
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/%EC%8A%A4%ED%82%AC%ED%8A%B8%EB%A6%AC/" rel="permalink">스킬트리 (level2)
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">스킬트리
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%9A%94%EC%95%BD/" rel="permalink">os 요약
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스 vs 스레드
+
+  프로세스
+    
+      컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램
+      운영체제로부터 시스템 자원을 할당받는 작업의 단위
+      
+    
+  
+  스레드
+    
+      프로세스 내에서 실행되는 여러 흐름의 단위
+      프...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" rel="permalink">운영체제 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스와 스레드의 차이
+프로세스
+실행 중인 프로그램
+메모리에 적재되어 cpu의 할당을 받을 수 있는 것
+OS로부터 주소공간, 파일, 메모리 등을 할당받은 것
+함수의 매개변수, 임시 자료를 갖는 프로세스 스택, 전역 변수를 수록하는 데이터 섹션 포함
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/data/structure/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="permalink">자료구조 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Array
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+        
+      
+        
+          <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 dongkwon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

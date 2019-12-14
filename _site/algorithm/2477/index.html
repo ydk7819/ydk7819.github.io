@@ -1,0 +1,788 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[모의 SW 역량테스트] 차량 정비소 - Gobook</title>
+<meta name="description" content="차량 정비소">
+
+
+  <meta name="author" content="dongkwon">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko">
+<meta property="og:site_name" content="Gobook">
+<meta property="og:title" content="[모의 SW 역량테스트] 차량 정비소">
+<meta property="og:url" content="http://localhost:4000/algorithm/2477/">
+
+
+  <meta property="og:description" content="차량 정비소">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-07-30T08:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/algorithm/2477/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "dongkwon",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Gobook Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Gobook
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tag</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile.jpg" alt="dongkwon" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">dongkwon</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Gwangju, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+            <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[모의 SW 역량테스트] 차량 정비소">
+    <meta itemprop="description" content="차량 정비소">
+    <meta itemprop="datePublished" content="July 30, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[모의 SW 역량테스트] 차량 정비소
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><a href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV6c6bgaIuoDFAXy">차량 정비소</a></p>
+
+<p>N 개의 접수창구, M 개의 정비창구가 있다.</p>
+
+<p>각 창구는 1부터 번호가 붙어있다.</p>
+
+<p>각 창구마다 소요시간이 주어진다.</p>
+
+<p>차량 정비소를 방문한 총 고객은 K명이다.</p>
+
+<p>각 고객이 차량정비소에 도착하는 시간이 고객 번호 순서대로 주어진다.</p>
+
+<p>고객은 정비소에 도착한 후 접수를 한다.</p>
+
+<p>빈창구가 없다면 생길 때 까지 기다린다.</p>
+
+<p>접수 창구의 우선 순위는 다음과 같다.</p>
+<ol>
+  <li>여러 고객이 기다리는 경우 고객번호가 낮은 순서부터 우선 접수한다.</li>
+  <li>빈 창구가 여러 곳일 경우 창구 번호가 적은 곳부터 간다.</li>
+</ol>
+
+<p>정비 창구의 우선 순위는 다음과 같다.</p>
+<ol>
+  <li>먼저 기다리는 고객이 우선한다.</li>
+  <li>여러 고객이 동시에 접수창구에서 접수하고 오는 경우 접수창구의 번호가 낮은 순서대로 우선한다.</li>
+  <li>빈 창구가 여러 곳일 경우 창구 번호가 적은 곳부터 간다.</li>
+</ol>
+
+<p>접수창구와 정비창구의 번호가 주어졌을 때 두 창구 모두 동시에 이용하는 고객들의 번호의 합을 구하여라.</p>
+
+<p>없을 경우 0을 출력한다.</p>
+
+<hr />
+
+<h3 id="풀이">풀이</h3>
+
+<ol>
+  <li>
+    <p>입력</p>
+
+    <p>주어지는 창구와 고객들의 정보를 각각 배열로 받는다.</p>
+
+    <p>각 번호는 1번부터 시작하기 때문에 배열의 크기를 1 늘려준다.</p>
+  </li>
+  <li>
+    <p>처리</p>
+
+    <p>고객들의 정보를 저장할 객체를 만든다. - Customer</p>
+
+    <p>Customer에는 a/b에서 걸린시간, 고객번호, a창구 번호, b창구 번호를 저장한다.</p>
+
+    <p>queue를 사용하여 순서대로 조건에 맞게 처리할 수 있도록 하였다.</p>
+
+    <p>while을 통해 시간이 경과하는 것을 처리해준다.</p>
+
+    <ol>
+      <li>
+        <p>고객의 도착 시간</p>
+
+        <ul>
+          <li>
+            <p>-1을 해주면서 0이 되면 waitA 큐에 넣어준다.</p>
+          </li>
+          <li>
+            <p>큐에 들어간 것이 K와 같다면 이 과정은 생략하도록 처리한다.</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>정비 창구</p>
+
+        <ul>
+          <li>
+            <p>접수창구에서 바로 넘어올 수 있도록 정비 창구먼저 처리한다.</p>
+          </li>
+          <li>waitB 큐가 있고, 창구가 비어있으면 창구에 고객 객체를 넣는다.
+            <ul>
+              <li>이때, 객체의 b값에 창구의 번호를 넣어준다.</li>
+            </ul>
+          </li>
+          <li>
+            <p>비어있지 않은 창구의 고객 객체의 b_time을 늘린다.</p>
+          </li>
+          <li>b_time이 주어진 시간과 같다면 end 리스트에 넣는다.</li>
+        </ul>
+      </li>
+      <li>
+        <p>접수 창구</p>
+
+        <ul>
+          <li>정비창구와 똑같이 구현한다.</li>
+        </ul>
+      </li>
+      <li>
+        <p>while 종료</p>
+
+        <ul>
+          <li>end리스트에 넣을 때 카운팅을 해주고 K와 같아지면 break</li>
+        </ul>
+      </li>
+      <li>
+        <p>end리스트에서 a와 b둘다 방문한 고객 번호를 누적한다.</p>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Queue</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.StringTokenizer</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="err">차량정비소</span> <span class="err">{</span>
+	<span class="nc">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">NumberFormatException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+		<span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+		
+		<span class="kt">int</span> <span class="no">T</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+		
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">tc</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">tc</span> <span class="o">&lt;=</span> <span class="no">T</span><span class="o">;</span> <span class="n">tc</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="nc">StringTokenizer</span> <span class="n">st1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+			<span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st1</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+			<span class="kt">int</span> <span class="no">M</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st1</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+			<span class="kt">int</span> <span class="no">K</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st1</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+			<span class="kt">int</span> <span class="no">A</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st1</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+			<span class="kt">int</span> <span class="no">B</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st1</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+			
+			<span class="kt">int</span><span class="o">[]</span> <span class="n">shopA</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+			<span class="kt">int</span><span class="o">[]</span> <span class="n">shopB</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">M</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+			<span class="kt">int</span><span class="o">[]</span> <span class="n">customer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">K</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+			
+			<span class="nc">StringTokenizer</span> <span class="n">st2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="no">N</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="n">shopA</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st2</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+			<span class="o">}</span>
+			
+			<span class="nc">StringTokenizer</span> <span class="n">st3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="no">M</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="n">shopB</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st3</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+			<span class="o">}</span>
+			
+			<span class="nc">StringTokenizer</span> <span class="n">st4</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="no">K</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="n">customer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st4</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+			<span class="o">}</span>
+			
+			
+			<span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Customer</span><span class="o">&gt;</span> <span class="n">waitA</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+			<span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Customer</span><span class="o">&gt;</span> <span class="n">waitB</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+			<span class="nc">Customer</span><span class="o">[]</span> <span class="n">chkA</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Customer</span><span class="o">[</span><span class="no">N</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+			<span class="nc">Customer</span><span class="o">[]</span> <span class="n">chkB</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Customer</span><span class="o">[</span><span class="no">M</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+			<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Customer</span><span class="o">&gt;</span> <span class="n">end</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+			
+			<span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+			<span class="kt">int</span> <span class="n">arrived</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+			
+			<span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">cnt</span> <span class="o">==</span> <span class="no">K</span><span class="o">)</span> <span class="o">{</span>
+					<span class="k">break</span><span class="o">;</span>
+				<span class="o">}</span>
+				
+				<span class="k">if</span><span class="o">(</span><span class="n">arrived</span> <span class="o">&lt;</span> <span class="no">K</span><span class="o">)</span> <span class="o">{</span>
+					<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="no">K</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+						<span class="k">if</span><span class="o">(</span><span class="n">customer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+							<span class="n">waitA</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Customer</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">));</span>
+							<span class="n">arrived</span><span class="o">++;</span>
+						<span class="o">}</span>
+						<span class="n">customer</span><span class="o">[</span><span class="n">i</span><span class="o">]--;</span>
+					<span class="o">}</span>
+				<span class="o">}</span>
+				
+				
+				<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="no">M</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+					<span class="k">if</span><span class="o">(</span><span class="n">chkB</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">waitB</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+						<span class="n">chkB</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">waitB</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+						<span class="n">chkB</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">b</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+					<span class="o">}</span>
+					<span class="k">if</span><span class="o">(</span><span class="n">chkB</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+						<span class="n">chkB</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">b_time</span><span class="o">++;</span>
+						<span class="k">if</span><span class="o">(</span><span class="n">chkB</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">b_time</span> <span class="o">==</span> <span class="n">shopB</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">{</span>
+							<span class="n">end</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">chkB</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+							<span class="n">chkB</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+							<span class="n">cnt</span><span class="o">++;</span>
+						<span class="o">}</span>
+					<span class="o">}</span>
+				<span class="o">}</span>
+				
+				<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="no">N</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+					<span class="k">if</span><span class="o">(</span><span class="n">chkA</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">waitA</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+						<span class="n">chkA</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">waitA</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+						<span class="n">chkA</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">a</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+					<span class="o">}</span>
+					<span class="k">if</span><span class="o">(</span><span class="n">chkA</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+						<span class="n">chkA</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">a_time</span><span class="o">++;</span>
+						<span class="k">if</span><span class="o">(</span><span class="n">chkA</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">a_time</span> <span class="o">==</span> <span class="n">shopA</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">{</span>
+							<span class="n">waitB</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">chkA</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+							<span class="n">chkA</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+						<span class="o">}</span>
+					<span class="o">}</span>
+				<span class="o">}</span>
+				
+				
+			<span class="o">}</span>
+			
+			<span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">end</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">end</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">a</span> <span class="o">==</span> <span class="no">A</span> <span class="o">&amp;&amp;</span> <span class="n">end</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">b</span> <span class="o">==</span> <span class="no">B</span><span class="o">)</span> <span class="o">{</span>
+					<span class="n">ans</span> <span class="o">+=</span> <span class="n">end</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">c_num</span><span class="o">;</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">ans</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">ans</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+			<span class="o">}</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"#"</span><span class="o">+</span><span class="n">tc</span><span class="o">+</span><span class="s">" "</span><span class="o">+</span><span class="n">ans</span><span class="o">);</span>
+			
+		<span class="o">}</span>
+		
+	<span class="o">}</span>
+	<span class="kd">static</span> <span class="kd">class</span> <span class="nc">Customer</span><span class="o">{</span>
+		<span class="kt">int</span> <span class="n">a_time</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">b_time</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">c_num</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">a</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">b</span><span class="o">;</span>
+		
+		<span class="kd">public</span> <span class="nf">Customer</span><span class="o">(</span><span class="kt">int</span> <span class="n">a_time</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b_time</span><span class="o">,</span> <span class="kt">int</span> <span class="n">c_num</span><span class="o">,</span> <span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">a_time</span> <span class="o">=</span> <span class="n">a_time</span><span class="o">;</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">b_time</span> <span class="o">=</span> <span class="n">b_time</span><span class="o">;</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">c_num</span> <span class="o">=</span> <span class="n">c_num</span><span class="o">;</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">;</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#swexpert" class="page__taxonomy-item" rel="tag">swexpert</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">algorithm</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-07-30T08:00:00+09:00">July 30, 2019</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/17281/" class="pagination--pager" title="17281 ⚾
+">이전</a>
+    
+    
+      <a href="/algorithm/4008/" class="pagination--pager" title="[모의 SW 역량테스트] 숫자 만들기
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/%EC%8A%A4%ED%82%AC%ED%8A%B8%EB%A6%AC/" rel="permalink">스킬트리 (level2)
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">스킬트리
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%9A%94%EC%95%BD/" rel="permalink">os 요약
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스 vs 스레드
+
+  프로세스
+    
+      컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램
+      운영체제로부터 시스템 자원을 할당받는 작업의 단위
+      
+    
+  
+  스레드
+    
+      프로세스 내에서 실행되는 여러 흐름의 단위
+      프...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" rel="permalink">운영체제 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스와 스레드의 차이
+프로세스
+실행 중인 프로그램
+메모리에 적재되어 cpu의 할당을 받을 수 있는 것
+OS로부터 주소공간, 파일, 메모리 등을 할당받은 것
+함수의 매개변수, 임시 자료를 갖는 프로세스 스택, 전역 변수를 수록하는 데이터 섹션 포함
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/data/structure/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="permalink">자료구조 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Array
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+        
+      
+        
+          <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 dongkwon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

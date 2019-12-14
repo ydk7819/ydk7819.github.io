@@ -1,0 +1,748 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>os 요약 - Gobook</title>
+<meta name="description" content="프로세스 vs 스레드  프로세스          컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램      운영체제로부터 시스템 자원을 할당받는 작업의 단위              스레드          프로세스 내에서 실행되는 여러 흐름의 단위      프로세스의 특정한 수행 경로              자바 스레드          일반 스레드와 같다. JVM이 운영체제역할      자바에는 프로세스가 존재하지 않고 스레드만 존재      ">
+
+
+  <meta name="author" content="dongkwon">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko">
+<meta property="og:site_name" content="Gobook">
+<meta property="og:title" content="os 요약">
+<meta property="og:url" content="http://localhost:4000/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%9A%94%EC%95%BD/">
+
+
+  <meta property="og:description" content="프로세스 vs 스레드  프로세스          컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램      운영체제로부터 시스템 자원을 할당받는 작업의 단위              스레드          프로세스 내에서 실행되는 여러 흐름의 단위      프로세스의 특정한 수행 경로              자바 스레드          일반 스레드와 같다. JVM이 운영체제역할      자바에는 프로세스가 존재하지 않고 스레드만 존재      ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-10-06T00:20:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%9A%94%EC%95%BD/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "dongkwon",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Gobook Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Gobook
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tag</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile.jpg" alt="dongkwon" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">dongkwon</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Gwangju, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+            <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="os 요약">
+    <meta itemprop="description" content="프로세스 vs 스레드  프로세스          컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램      운영체제로부터 시스템 자원을 할당받는 작업의 단위              스레드          프로세스 내에서 실행되는 여러 흐름의 단위      프로세스의 특정한 수행 경로              자바 스레드          일반 스레드와 같다. JVM이 운영체제역할      자바에는 프로세스가 존재하지 않고 스레드만 존재      ">
+    <meta itemprop="datePublished" content="October 06, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">os 요약
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="프로세스-vs-스레드">프로세스 vs 스레드</h2>
+<ul>
+  <li>프로세스
+    <ul>
+      <li>컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램</li>
+      <li>운영체제로부터 시스템 자원을 할당받는 작업의 단위</li>
+      <li><img src="https://gmlwjd9405.github.io/images/os-process-and-thread/process.png" alt="" /></li>
+    </ul>
+  </li>
+  <li>스레드
+    <ul>
+      <li>프로세스 내에서 실행되는 여러 흐름의 단위</li>
+      <li>프로세스의 특정한 수행 경로</li>
+      <li><img src="https://gmlwjd9405.github.io/images/os-process-and-thread/thread.png" alt="" /></li>
+    </ul>
+  </li>
+  <li>자바 스레드
+    <ul>
+      <li>일반 스레드와 같다. JVM이 운영체제역할</li>
+      <li>자바에는 프로세스가 존재하지 않고 스레드만 존재</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="멀티-프로세스-vs-멀티-스레드">멀티 프로세스 vs 멀티 스레드</h2>
+<ul>
+  <li>멀티 프로세스
+    <ul>
+      <li>하나의 응용프로그램을 여러 개의 프로세스로 구성하여 각 프로세스가 하나의 작업을 처리</li>
+      <li>장점 : 여러 프로세스 중 하나에 문제가 발생하면 그 프로세스만 죽는 것으로 끝남</li>
+      <li>단점
+        <ul>
+          <li>context switching에서 오버헤드
+            <ul>
+              <li>캐쉬 메모리 초기화 등 무거운 작업으로 시간이 소모되는 등 오버헤드 발생</li>
+              <li>프로세스 각각 독립된 메모리 영역을 할당받았기에 프로세스간 공유메모리가 없어 context switching이 발생하면 캐쉬에 있는 데이터를 리셋해야 함</li>
+            </ul>
+          </li>
+          <li>IPC
+            <ul>
+              <li>프로세스 간 통신이 어렵다.
+<strong>context switching?</strong></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>CPU에서 여러 프로세스를 돌아가면서 작업을 처리하는 과정</li>
+      <li>동작 중인 프로세스가 대기를 하면서 해당 프로세스의 상태 (context)를 보관하고 대기하고 있던 다음 순서의 프로세스가 동작하면서 이전에 보관했던 프로세스의 상태를 복귀한느 작업</li>
+    </ul>
+  </li>
+  <li>멀티 스레드
+    <ul>
+      <li>하나의 으용프로그램을 여러 개의 스레드로 구성하여 각 스레드가 하나의 작업을 처리</li>
+      <li>장점
+        <ul>
+          <li>시스템 자원 소모 감소</li>
+          <li>시스템 처리량 증가
+            <ul>
+              <li>스레드 간 데이터를 주고받는 것이 간단</li>
+              <li>스레드 사이의 작업량이 작아 문맥교환이 빠르다.</li>
+            </ul>
+          </li>
+          <li>간단한 통신방법으로 인한 프로그램 응답시간 단축
+            <ul>
+              <li>스레드는 프로세스 내의 stack을 제외한 모든 메모리를 공유하기 때문에 통신 부담이 적다.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>단점
+        <ul>
+          <li>설계/디버깅 어려움</li>
+          <li>단일 프로세스 시스템에 효과 미약</li>
+          <li>다른 프로세스에서 스레드 제어할 수 없다.</li>
+          <li>멀티 스레드 자원공유문제</li>
+          <li>하나의 스레드에 문제가 발생하면 전체 프로세스 영향
+<img src="https://gmlwjd9405.github.io/images/os-process-and-thread/multi-thread.png" alt="" /></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cpu-스케줄링">CPU 스케줄링</h2>
+<p>메모리의 ready 상태의 프로세스 중 하나를 선택해 CPU자원을 할당
+<strong>선점과 비선점의 차이</strong>
+기존에 CPU를 사용하던 프로세스가 계속 프로세스를 사용할 수 있는데도 불구하고 자원을 빼앗는지 여부</p>
+
+<ul>
+  <li>비선점
+    <ul>
+      <li>프로세스가 CPU를 할당받으면 완료될 때까지 CPU사용</li>
+      <li>일괄 처리방식</li>
+      <li>종류
+        <ul>
+          <li>FCFS(First come First Service) : 도착한 순서</li>
+          <li>SJF(Shortest Job First) : 실행시간 순서</li>
+          <li>HRN(Highest Response Ratio) : 우선순위 계산 결과 높은 것 부터 (대기시간+서비스시간/서비스시간)</li>
+          <li>비선점 우선순위 : 더 높은 우선순위 프로세스가 도착하면 큐의 맨 앞에 넣는다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>선점
+    <ul>
+      <li>우선순위가 높은 프로세스가 CPU를 강제로 빼앗아 사용</li>
+      <li>많은 오버헤드</li>
+      <li>종류
+        <ul>
+          <li>SRT(Shortest Remaining Time) : 현재 실행 중인 프로세스의 남은 시간과 대기 프로세스의 실행시간이 가장 짧은 프로세스에게 CPU할당</li>
+          <li>선점 우선순위 : 우선순위가 가장 높은 프로세스에게 할당</li>
+          <li>round robin : FCFS를 선점형태로 변환. 할당된 time quantum 동안 CPU를 사용한 뒤에 대기 큐의 가장 뒤로 배치. 할당 시간이 작으면 문맥교환 및 오버헤드 빈번</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="동기-vs-비동기">동기 vs 비동기</h2>
+<ul>
+  <li>동기 : 메소드를 실행시킴과 동시에 반환 값이 기대되는 경우</li>
+  <li>비동기 : 메소드를 실행시키고 딴 일을 하다가 해당 작업이 완료되면 그에 따른 작업을 처리하는 것</li>
+</ul>
+
+<h2 id="페이징-vs-세그먼테이션">페이징 vs 세그먼테이션</h2>
+<ul>
+  <li>단편화
+    <ul>
+      <li>프로그램을 할당하고 반납하는 과정을 반복할 때 사용되지 않고 남는 빈 공간</li>
+      <li>내부 단편화 : 영역이 프로그램보다 커서 남은 공간</li>
+      <li>외부 단편화 : 영역이 프로그램보다 작아서 할당되지 못해 남아있는 전체 영역</li>
+    </ul>
+  </li>
+  <li>가상 기억장치
+    <ul>
+      <li>용량이 작은 주기억장치를 마치 큰 용량을 가진 것처럼 사용하는 것</li>
+      <li>주기억장치보다 용량이 큰 프로그램을 실행</li>
+      <li>블록 단위로 나누어 사용하므로 단편화를 해결할 수 있다.</li>
+    </ul>
+  </li>
+  <li>페이징
+    <ul>
+      <li>분산 메모리 할당</li>
+      <li>프레임 : 물리 메모리를 일정된 한 크기로 나눈 블록</li>
+      <li>페이지 : 가상 메모리를 일정된 한 크기로 나눈 블록</li>
+      <li>프레임 크기 = 페이지 크기</li>
+      <li>외부 단편화는 발생하지 않지만 내부 단편화는 발생</li>
+      <li>페이지 맵 테이블</li>
+      <li><img src="https://t1.daumcdn.net/cfile/tistory/192742394E81D7EC1E" alt="" /></li>
+    </ul>
+  </li>
+  <li>세그멘테이션
+    <ul>
+      <li>가변 크기의 분산 메모리 할당</li>
+      <li>가변크기의 단위를 세그먼트라 부름</li>
+      <li>내부 단편화는 발생하지 않지만 외부 단편화는 발생</li>
+      <li>세그먼트 맵 테이블</li>
+    </ul>
+  </li>
+  <li>페이지 : 내부단편화, 동일한 크기로 메모리를 효율적으로 사용</li>
+  <li>세그먼트 : 외부단편화, 공유와 보호의 지원이 편리</li>
+</ul>
+
+<h2 id="페이지-크기">페이지 크기</h2>
+<ul>
+  <li>페이지 크기가 작을 경우
+    <ul>
+      <li>페이지 단편화 감소</li>
+      <li>국부성에 더 일치할 수 있기 때문에 기억장치 효율이 높아짐</li>
+      <li>페이지 테이블의 크기가 커져 매핑속도가 느려짐</li>
+      <li>디스크 접근 횟수가 많아져서 입출력 시간 늘어남</li>
+      <li>효율적인 워킹 셋</li>
+    </ul>
+  </li>
+  <li>페이지 크기가 클 경우
+    <ul>
+      <li>페이지 테이블의 크기가 작아져 매핑속도가 빠름</li>
+      <li>디스크 접근 횟수가 줄어들어 입출력 효율성 증가</li>
+      <li>단편화 증가, 한 개의 페이지를 주 기억장치로 이동하는 시간이 늘어남</li>
+      <li>불필요한 내용도 포함될 수 있음</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="워킹셋--페이지-부재">워킹셋 / 페이지 부재</h2>
+<ul>
+  <li>워킹셋
+    <ul>
+      <li>프로세스가 일정 시간동안 자주 참조하는 페이지들의 집합</li>
+      <li>실행중인 프로세스가 주기억장치를 참조할 때는 일부 페이지만 집중적으로 참조하는 성질 (국부성) 이용</li>
+      <li>자주 참조되는 워킹셋을 주기억장치에 상주시킴으로서 페이지 부재, 교체현상을 줄임\</li>
+    </ul>
+  </li>
+  <li>페이지 부재 (page fault)
+    <ul>
+      <li>프로세스 실행 시 참조할 페이지가 주기억장치에 없음</li>
+    </ul>
+  </li>
+  <li>스래싱
+    <ul>
+      <li>프로세스의 처리 시간보다 페이지 교체시간이 더 많아짐</li>
+      <li>자주 페이지 부재가 발생할 때 일어남</li>
+    </ul>
+  </li>
+</ul>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#os" class="page__taxonomy-item" rel="tag">os</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#os" class="page__taxonomy-item" rel="tag">os</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-10-06T00:20:00+09:00">October 06, 2019</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" class="pagination--pager" title="운영체제 정리
+">이전</a>
+    
+    
+      <a href="/algorithm/%EC%8A%A4%ED%82%AC%ED%8A%B8%EB%A6%AC/" class="pagination--pager" title="스킬트리 (level2)
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/%EC%8A%A4%ED%82%AC%ED%8A%B8%EB%A6%AC/" rel="permalink">스킬트리 (level2)
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">스킬트리
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" rel="permalink">운영체제 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스와 스레드의 차이
+프로세스
+실행 중인 프로그램
+메모리에 적재되어 cpu의 할당을 받을 수 있는 것
+OS로부터 주소공간, 파일, 메모리 등을 할당받은 것
+함수의 매개변수, 임시 자료를 갖는 프로세스 스택, 전역 변수를 수록하는 데이터 섹션 포함
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/data/structure/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="permalink">자료구조 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Array
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/network/%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/" rel="permalink">컴퓨터 네트워크 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">컴퓨터 네트워크
+
+
+HTTP의 GET과 POST비교
+둘 다 http 프로토콜을 이용해서 서버에 무엇인 가를 요청할 때 사용하는 방식
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+        
+      
+        
+          <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 dongkwon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

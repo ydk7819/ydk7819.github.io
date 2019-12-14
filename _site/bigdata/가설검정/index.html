@@ -1,0 +1,770 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>통계 분석 기법을 이용한 가설 검정 - Gobook</title>
+<meta name="description" content="통계적 가설 검정이란?">
+
+
+  <meta name="author" content="dongkwon">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko">
+<meta property="og:site_name" content="Gobook">
+<meta property="og:title" content="통계 분석 기법을 이용한 가설 검정">
+<meta property="og:url" content="http://localhost:4000/bigdata/%EA%B0%80%EC%84%A4%EA%B2%80%EC%A0%95/">
+
+
+  <meta property="og:description" content="통계적 가설 검정이란?">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-06-04T23:30:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/bigdata/%EA%B0%80%EC%84%A4%EA%B2%80%EC%A0%95/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "dongkwon",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Gobook Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Gobook
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tag</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile.jpg" alt="dongkwon" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">dongkwon</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Gwangju, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+            <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="통계 분석 기법을 이용한 가설 검정">
+    <meta itemprop="description" content="통계적 가설 검정이란?">
+    <meta itemprop="datePublished" content="June 04, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">통계 분석 기법을 이용한 가설 검정
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="통계적-가설-검정이란">통계적 가설 검정이란?</h2>
+
+<h3 id="기술-통계와-추론-통계">기술 통계와 추론 통계</h3>
+
+<ul>
+  <li>통계분석은 기술통계와 추론통계로 나뉜다.
+    <ul>
+      <li>기술통계 : 데이터를 요약해 설명하는 기법
+        <ul>
+          <li>ex) 사람들이 받는 월급을 집계해 전체 월급 평균을 구하는 것</li>
+        </ul>
+      </li>
+      <li>추론통계 : 숫자를 요약하는 것을 넘어 어떤 값이 발생할 확률을 계산하는 통계 기법
+        <ul>
+          <li>ex) 수집된 데이터에서 성별에 따라 월급에 차이가 있을 때, 이러한 차이가 우연히 발생할 확률을 계산한다.</li>
+          <li>만약 차이가 우연히 나타날 확률이 작다면 성별에 따른 월급 차이가 통계적으로 <code class="highlighter-rouge">유의하다</code>고 한다.</li>
+          <li>확률이 크다면 성별에 따른 월급 차이가 통계적으로 <code class="highlighter-rouge">유의하지 않다</code>고 한다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>일반적으로 통계 분석을 수행했다는 것은 추론 통계를 통해 가설 검정을 했다는 의미</li>
+  <li>기술 통계 분석에서 집단 간 차이가 있는 것으로 나타났더라도 우연에 의한 차이일 수 있기 때문에 신뢰할 수 있는 결론을 내리려면 <code class="highlighter-rouge">유의확률</code>을 계산해야 한다.</li>
+</ul>
+
+<h3 id="통계적-가설-검정">통계적 가설 검정</h3>
+<ul>
+  <li>유의확률을 이용해 가설을 검정하는 방법</li>
+  <li><code class="highlighter-rouge">유의확률</code> : 실제로는 집단 간 차이가 없는데 우연히 차이가 있는 데이터가 추출될 확률</li>
+  <li>통계 분석 결과 유의확률이 크게 나타났다면 <code class="highlighter-rouge">집단 간 차이가 통계적으로 유의하지 않다</code>
+    <ul>
+      <li>실제로 차이가 없더라도 우연에 의해 이 정도 차이가 발생할 확률이 크다는 것을 의미한다.</li>
+    </ul>
+  </li>
+  <li>반대로 유의확률이 작게 나타났다면 <code class="highlighter-rouge">집단 간 차이가 통계적으로 유의하다</code>
+    <ul>
+      <li>실제로 차이가 없는데 이 정도 차이가 관찰될 가능성이 작다, 우연으로 보기 힘들다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="t검정---두-집단의-평균-비교">t검정 - 두 집단의 평균 비교</h2>
+<ul>
+  <li><code class="highlighter-rouge">t 검정</code>은 두 집단의 평균에 통계적으로 유의한 차이가 있는지 알아볼 때 사용하는 통계 분석 기법.</li>
+  <li><code class="highlighter-rouge">t.test()</code>를 이용해 t검정을 할 수 있다.</li>
+</ul>
+
+<h3 id="compact-자동차와-sub-자동차의-도시-연비-t-검정">compact 자동차와 sub 자동차의 도시 연비 t 검정</h3>
+<ul>
+  <li>ggplot2의 mpg데이터 이용</li>
+  <li>소형차와 suv가 도시 연비에서 통계적으로 유의한 차이가 있는지 알아보자</li>
+</ul>
+
+<ol>
+  <li>mpg의 class,cty 변수만 추출한 뒤, class가 compact인 차와 suv인 차를 추출
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">mpg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">ggplot2</span><span class="o">::</span><span class="n">mpg</span><span class="p">)</span><span class="w">
+
+ </span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
+ </span><span class="n">mpg_diff</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mpg</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+     </span><span class="n">select</span><span class="p">(</span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">cty</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+     </span><span class="n">filter</span><span class="p">(</span><span class="n">class</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"compact"</span><span class="p">,</span><span class="w"> </span><span class="s2">"suv"</span><span class="p">))</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li><code class="highlighter-rouge">t.test()</code>를 이용한 t검정
+    <ul>
+      <li>’~’를 이용해 비교할 값인 cty와 비교할 변수인 class 변수를 지정</li>
+      <li>t 검정은 비교하는 집단의 분산이 같은지 여부에 따라 적용하는 공식이 다르다.</li>
+      <li>여기에서는 분산이 같다고 가정</li>
+    </ul>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">t.test</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg_diff</span><span class="p">,</span><span class="w"> </span><span class="n">cty</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">var.equal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
+
+
+     </span><span class="n">Two</span><span class="w"> </span><span class="n">Sample</span><span class="w"> </span><span class="n">t</span><span class="o">-</span><span class="n">test</span><span class="w">
+
+ </span><span class="n">data</span><span class="o">:</span><span class="w">  </span><span class="n">cty</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">class</span><span class="w">
+ </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11.917</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">107</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">2.2e-16</span><span class="w">
+ </span><span class="n">alternative</span><span class="w"> </span><span class="n">hypothesis</span><span class="o">:</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="n">difference</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">means</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">equal</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="m">0</span><span class="w">
+ </span><span class="m">95</span><span class="w"> </span><span class="n">percent</span><span class="w"> </span><span class="n">confidence</span><span class="w"> </span><span class="n">interval</span><span class="o">:</span><span class="w">
+ </span><span class="m">5.525180</span><span class="w"> </span><span class="m">7.730139</span><span class="w">
+ </span><span class="n">sample</span><span class="w"> </span><span class="n">estimates</span><span class="o">:</span><span class="w">
+ </span><span class="n">mean</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="n">compact</span><span class="w">     </span><span class="n">mean</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="n">suv</span><span class="w">
+              </span><span class="m">20.12766</span><span class="w">              </span><span class="m">13.50000</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <ul>
+      <li><code class="highlighter-rouge"> p-value &lt; 2.2e-16 </code>
+        <ul>
+          <li>출력된 결과에서 p-value가 유의확률을 의미</li>
+          <li>일반적으로 유의확률 5% 기준에서 p-value가 0.05 미만이면 <code class="highlighter-rouge">집단 간 차이가 통계적으로 유의하다</code>고 해석한다.</li>
+          <li>p-value &lt; 2.2e-16 : 유의확률이 2.2 앞에 0이 16개 있는 값보다 작다 ( 2.2 * 10 ^ -16)</li>
+          <li>p-value가 0.05보다 작기 때문에 ‘compact와 suv간 평균 도시 연비 차이가 통계적으로 유의하다’고 해석할 수 있다.</li>
+        </ul>
+      </li>
+      <li><code class="highlighter-rouge">sample estimates:</code>
+        <ul>
+          <li>각 집단의 cty평균</li>
+          <li>compact의 도시 연비가 더 높다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="일반-휘발유와-고급-휘발유의-도시-연비-t-검정">일반 휘발유와 고급 휘발유의 도시 연비 t 검정</h3>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mpg_diff2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mpg</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">select</span><span class="p">(</span><span class="n">fl</span><span class="p">,</span><span class="w"> </span><span class="n">cty</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">filter</span><span class="p">(</span><span class="n">fl</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"r"</span><span class="p">,</span><span class="w"> </span><span class="s2">"p"</span><span class="p">))</span><span class="w">
+</span><span class="n">t.test</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mpg_diff2</span><span class="p">,</span><span class="w"> </span><span class="n">cty</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">fl</span><span class="p">,</span><span class="w"> </span><span class="n">var.equal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
+
+
+	</span><span class="n">Two</span><span class="w"> </span><span class="n">Sample</span><span class="w"> </span><span class="n">t</span><span class="o">-</span><span class="n">test</span><span class="w">
+
+</span><span class="n">data</span><span class="o">:</span><span class="w">  </span><span class="n">cty</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">fl</span><span class="w">
+</span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.0662</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">218</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2875</span><span class="w">
+</span><span class="n">alternative</span><span class="w"> </span><span class="n">hypothesis</span><span class="o">:</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="n">difference</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">means</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">equal</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="m">95</span><span class="w"> </span><span class="n">percent</span><span class="w"> </span><span class="n">confidence</span><span class="w"> </span><span class="n">interval</span><span class="o">:</span><span class="w">
+ </span><span class="m">-0.5322946</span><span class="w">  </span><span class="m">1.7868733</span><span class="w">
+</span><span class="n">sample</span><span class="w"> </span><span class="n">estimates</span><span class="o">:</span><span class="w">
+</span><span class="n">mean</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="n">r</span><span class="w">
+       </span><span class="m">17.36538</span><span class="w">        </span><span class="m">16.73810</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li>p-value가 0.05보다 큰 0.2875 : 일반 휘발유와 고급 휘발유를 사용하는 자동차 간 도시 연비 차이가 통계적으로 유의하지 않다.</li>
+  <li>고급 휘발유의 도시 연비 평균이 0.6 정도 높지만 이 정도 차이는 우연히 발생했을 가능성이 크다고 해석한다.</li>
+</ul>
+
+<h2 id="상관분석---두-변수의-관계성-분석">상관분석 - 두 변수의 관계성 분석</h2>
+
+<ul>
+  <li>상관분석 : 두 연속 변수가 서로 관련이 있는지 검정하는 통계 분석 기법</li>
+  <li>상관분석을 통해 도출한 <code class="highlighter-rouge">상관계수</code>로 두 변수의 관련성의 정도를 파악할 수 있다.</li>
+  <li>상관계수는 0~1 사이의 값, 1에 가까울 수록 관련성이 크다.</li>
+  <li>상관계수가 양수면 정 비례, 음수면 반 비례</li>
+</ul>
+
+<h3 id="실업자-수와-개인-소비-지출의-상관관계">실업자 수와 개인 소비 지출의 상관관계</h3>
+
+<ul>
+  <li>ggplot2의 economics를 이용</li>
+  <li>unemploy와 pce(개인소비지출)간 통계적으로 유의한 상관관계가 있는지 알아보자</li>
+  <li>
+    <p>상관 분석은 <code class="highlighter-rouge">cor.test()</code>를 이용 (R 내장)</p>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">ecconomics</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">ggplot2</span><span class="o">::</span><span class="n">economics</span><span class="p">)</span><span class="w">
+  </span><span class="n">cor.test</span><span class="p">(</span><span class="n">economics</span><span class="o">$</span><span class="n">unemploy</span><span class="p">,</span><span class="w"> </span><span class="n">economics</span><span class="o">$</span><span class="n">pce</span><span class="p">)</span><span class="w">
+
+      </span><span class="n">Pearson</span><span class="err">'</span><span class="n">s</span><span class="w"> </span><span class="n">product</span><span class="o">-</span><span class="n">moment</span><span class="w"> </span><span class="n">correlation</span><span class="w">
+
+  </span><span class="n">data</span><span class="o">:</span><span class="w">  </span><span class="n">economics</span><span class="o">$</span><span class="n">unemploy</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">economics</span><span class="o">$</span><span class="n">pce</span><span class="w">
+  </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">18.605</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">572</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">2.2e-16</span><span class="w">
+  </span><span class="n">alternative</span><span class="w"> </span><span class="n">hypothesis</span><span class="o">:</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="n">correlation</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">equal</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="m">0</span><span class="w">
+  </span><span class="m">95</span><span class="w"> </span><span class="n">percent</span><span class="w"> </span><span class="n">confidence</span><span class="w"> </span><span class="n">interval</span><span class="o">:</span><span class="w">
+  </span><span class="m">0.5603164</span><span class="w"> </span><span class="m">0.6625460</span><span class="w">
+  </span><span class="n">sample</span><span class="w"> </span><span class="n">estimates</span><span class="o">:</span><span class="w">
+      </span><span class="n">cor</span><span class="w">
+  </span><span class="m">0.6139997</span><span class="w">
+</span></code></pre></div>    </div>
+    <ul>
+      <li>p-value가 0.05 미만이므로, 실업자 수와 개인 소비 지출의 상관이 통계쩍으로 유의하다.</li>
+      <li><code class="highlighter-rouge">cor</code> : 상관계수
+        <ul>
+          <li>상관계수가 양수 0.61이므로, 실업자 수와 개인 소비 지출은 정비례관계이다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="상관행렬-히트맵">상관행렬 히트맵</h3>
+<ul>
+  <li>여러 변수의 관련성을 한 번에 알아보고자 할 경우, <code class="highlighter-rouge">상관행렬</code>을 만든다.</li>
+  <li>상관행렬을 보면 어떤 변수끼리 관련이 크고 적은지 파악할 수 있다.</li>
+  <li>mtcar 데이터 사용 (R 내장)</li>
+</ul>
+
+<ol>
+  <li><code class="highlighter-rouge">cor()</code>으로 상관행렬을 만든다
+    <ul>
+      <li>소수점 셋째 자리에서 반올림</li>
+    </ul>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">car_cor</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cor</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span><span class="w">
+ </span><span class="nf">round</span><span class="p">(</span><span class="n">car_cor</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+
+
+        </span><span class="n">mpg</span><span class="w">   </span><span class="n">cyl</span><span class="w">  </span><span class="n">disp</span><span class="w">    </span><span class="n">hp</span><span class="w">  </span><span class="n">drat</span><span class="w">    </span><span class="n">wt</span><span class="w">  </span><span class="n">qsec</span><span class="w">    </span><span class="n">vs</span><span class="w">    </span><span class="n">am</span><span class="w">  </span><span class="n">gear</span><span class="w">  </span><span class="n">carb</span><span class="w">
+ </span><span class="n">mpg</span><span class="w">   </span><span class="m">1.00</span><span class="w"> </span><span class="m">-0.85</span><span class="w"> </span><span class="m">-0.85</span><span class="w"> </span><span class="m">-0.78</span><span class="w">  </span><span class="m">0.68</span><span class="w"> </span><span class="m">-0.87</span><span class="w">  </span><span class="m">0.42</span><span class="w">  </span><span class="m">0.66</span><span class="w">  </span><span class="m">0.60</span><span class="w">  </span><span class="m">0.48</span><span class="w"> </span><span class="m">-0.55</span><span class="w">
+ </span><span class="n">cyl</span><span class="w">  </span><span class="m">-0.85</span><span class="w">  </span><span class="m">1.00</span><span class="w">  </span><span class="m">0.90</span><span class="w">  </span><span class="m">0.83</span><span class="w"> </span><span class="m">-0.70</span><span class="w">  </span><span class="m">0.78</span><span class="w"> </span><span class="m">-0.59</span><span class="w"> </span><span class="m">-0.81</span><span class="w"> </span><span class="m">-0.52</span><span class="w"> </span><span class="m">-0.49</span><span class="w">  </span><span class="m">0.53</span><span class="w">
+ </span><span class="n">disp</span><span class="w"> </span><span class="m">-0.85</span><span class="w">  </span><span class="m">0.90</span><span class="w">  </span><span class="m">1.00</span><span class="w">  </span><span class="m">0.79</span><span class="w"> </span><span class="m">-0.71</span><span class="w">  </span><span class="m">0.89</span><span class="w"> </span><span class="m">-0.43</span><span class="w"> </span><span class="m">-0.71</span><span class="w"> </span><span class="m">-0.59</span><span class="w"> </span><span class="m">-0.56</span><span class="w">  </span><span class="m">0.39</span><span class="w">
+ </span><span class="n">hp</span><span class="w">   </span><span class="m">-0.78</span><span class="w">  </span><span class="m">0.83</span><span class="w">  </span><span class="m">0.79</span><span class="w">  </span><span class="m">1.00</span><span class="w"> </span><span class="m">-0.45</span><span class="w">  </span><span class="m">0.66</span><span class="w"> </span><span class="m">-0.71</span><span class="w"> </span><span class="m">-0.72</span><span class="w"> </span><span class="m">-0.24</span><span class="w"> </span><span class="m">-0.13</span><span class="w">  </span><span class="m">0.75</span><span class="w">
+ </span><span class="n">drat</span><span class="w">  </span><span class="m">0.68</span><span class="w"> </span><span class="m">-0.70</span><span class="w"> </span><span class="m">-0.71</span><span class="w"> </span><span class="m">-0.45</span><span class="w">  </span><span class="m">1.00</span><span class="w"> </span><span class="m">-0.71</span><span class="w">  </span><span class="m">0.09</span><span class="w">  </span><span class="m">0.44</span><span class="w">  </span><span class="m">0.71</span><span class="w">  </span><span class="m">0.70</span><span class="w"> </span><span class="m">-0.09</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <ul>
+      <li>cyl / mpg 교차 부분은 -0.85이므로, 연비가 높을수록 실린더 수가 적은 경향이 있다.</li>
+      <li>cyl / wt 의 상관계수는 0.78이므로, 실린더 수가 많을 수록 자동차가 무거운 경향이 있다.</li>
+    </ul>
+  </li>
+  <li>상관행렬을 히트맵으로 만들기
+    <ul>
+      <li>여러 변수로 상관행렬을 만들면 너무 많은 숫자로 구성되기 때문에 변수들의 관계를 파악하기 쉽지 않다.</li>
+      <li>corrplot 패키지의 <code class="highlighter-rouge">corrplot()</code>을 이용해 상관행렬을 <code class="highlighter-rouge">히트맵</code>으로 만들어 변수들의 관계를 쉽게 파악할 수 있다.</li>
+      <li>
+        <p>히트맵 : 값의 크기를 색깔로 표현한 그래프</p>
+
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"corrplot"</span><span class="p">)</span><span class="w">
+  </span><span class="n">library</span><span class="p">(</span><span class="n">corrplot</span><span class="p">)</span><span class="w">
+  </span><span class="n">corrplot</span><span class="p">(</span><span class="n">car_cor</span><span class="p">)</span><span class="w">
+</span></code></pre></div>        </div>
+
+        <p><img src="/assets/images/chp13-1.PNG" alt="chp13-1" /></p>
+        <ul>
+          <li>상관계수가 클수록 원의 크기가 크고 색깔이 진함</li>
+          <li>상관계수가 양수면 파란색, 음수면 빨간색</li>
+        </ul>
+      </li>
+      <li><code class="highlighter-rouge">corrplot()</code>의 파라미터로 그래프 형태를 바꿀 수 있다.
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">corrplot</span><span class="p">(</span><span class="n">car_cor</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"number"</span><span class="p">)</span><span class="w">
+</span></code></pre></div>        </div>
+        <p><img src="/assets/images/chp13-2.PNG" alt="chp13-2" /></p>
+      </li>
+      <li>다양한 파라미터 지정
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">col</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">colorRampPalette</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"#BB4444"</span><span class="p">,</span><span class="w"> </span><span class="s2">"#EE9988"</span><span class="p">,</span><span class="w"> </span><span class="s2">"#FFFFFF"</span><span class="p">,</span><span class="w"> </span><span class="s2">"#77AADD"</span><span class="p">,</span><span class="w">
+                          </span><span class="s2">"#4477AA"</span><span class="p">))</span><span class="w">
+  </span><span class="n">corrplot</span><span class="p">(</span><span class="n">car_cor</span><span class="p">,</span><span class="w">
+          </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"color"</span><span class="p">,</span><span class="w">       </span><span class="c1"># 색깔로 표현</span><span class="w">
+          </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col</span><span class="p">(</span><span class="m">200</span><span class="p">),</span><span class="w">         </span><span class="c1"># 색상 200개 선정</span><span class="w">
+          </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"lower"</span><span class="p">,</span><span class="w">         </span><span class="c1"># 왼쪽 아래 행렬만 표시</span><span class="w">
+          </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"hclust"</span><span class="p">,</span><span class="w">       </span><span class="c1"># 유사한 상관계수끼리 군집화</span><span class="w">
+          </span><span class="n">addCoef.col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="p">,</span><span class="w">  </span><span class="c1"># 상관계수 색깔</span><span class="w">
+          </span><span class="n">tl.col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="p">,</span><span class="w">       </span><span class="c1"># 변수명 색깔</span><span class="w">
+          </span><span class="n">tl.srt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">45</span><span class="p">,</span><span class="w">            </span><span class="c1"># 변수명 45도 기울임</span><span class="w">
+          </span><span class="n">diag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span><span class="w">               </span><span class="c1"># 대각 행렬 제외</span><span class="w">
+</span></code></pre></div>        </div>
+        <p><img src="/assets/images/chp13-3.PNG" alt="chp13-3" /></p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#bigdata" class="page__taxonomy-item" rel="tag">bigdata</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-06-04T23:30:00+09:00">June 04, 2019</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/bigdata/%EC%9D%B8%ED%84%B0%EB%9E%99%ED%8B%B0%EB%B8%8C%EA%B7%B8%EB%9E%98%ED%94%84/" class="pagination--pager" title="인터랙티브 그래프
+">이전</a>
+    
+    
+      <a href="/bigdata/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EB%B3%B4%EA%B3%A0%EC%84%9C%EB%A7%8C%EB%93%A4%EA%B8%B0/" class="pagination--pager" title="데이터 분석 보고서 만들기
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/%EC%8A%A4%ED%82%AC%ED%8A%B8%EB%A6%AC/" rel="permalink">스킬트리 (level2)
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">스킬트리
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%9A%94%EC%95%BD/" rel="permalink">os 요약
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스 vs 스레드
+
+  프로세스
+    
+      컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램
+      운영체제로부터 시스템 자원을 할당받는 작업의 단위
+      
+    
+  
+  스레드
+    
+      프로세스 내에서 실행되는 여러 흐름의 단위
+      프...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" rel="permalink">운영체제 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">프로세스와 스레드의 차이
+프로세스
+실행 중인 프로그램
+메모리에 적재되어 cpu의 할당을 받을 수 있는 것
+OS로부터 주소공간, 파일, 메모리 등을 할당받은 것
+함수의 매개변수, 임시 자료를 갖는 프로세스 스택, 전역 변수를 수록하는 데이터 섹션 포함
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/data/structure/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="permalink">자료구조 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Array
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:ydk9557819@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://dongkwon.herokuapp.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+        
+      
+        
+          <li><a href="https://github.com/ydk7819" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 dongkwon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
